@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Graphics;
-import com.badlogic.androidgames.framework.Pixmap;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
 import com.badlogic.androidgames.framework.Screen;
 
@@ -18,7 +17,6 @@ public class MainMenuScreen extends Screen
     @Override
     public void update(float deltaTime) 
     {
-        Graphics g = game.getGraphics();
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
         game.getInput().getKeyEvents();       
         
@@ -28,31 +26,26 @@ public class MainMenuScreen extends Screen
             TouchEvent event = touchEvents.get(i);
             if(event.type == TouchEvent.TOUCH_UP) 
             {
-                if(inBounds(event, 0, g.getHeight() - 64, 64, 64)) 
-                {
-                    Settings.soundEnabled = !Settings.soundEnabled;
-                    //if(Settings.soundEnabled)
-                        //Assets.click.play(1);
-                }
-                if(inBounds(event, 64, 220, 192, 42) ) 
+            	//play
+            	if(inBounds(event, 60, 225, 205, 55)) 
                 {
                     game.setScreen(new GameScreen(game));
                     //if(Settings.soundEnabled)
                         //Assets.click.play(1);
                     return;
                 }
-                if(inBounds(event, 64, 220 + 42, 192, 42) ) 
+            	//options
+            	if(inBounds(event, 60, 305, 205, 55)) 
                 {
-                    //game.setScreen(new HighscoreScreen(game));
+                    game.setScreen(new OptionsScreen(game));
                     //if(Settings.soundEnabled)
                         //Assets.click.play(1);
                     return;
                 }
-                if(inBounds(event, 0, 220 + 84, 192, 42) ) 
+            	//quit
+                if(inBounds(event, 60, 390, 205, 55)) 
                 {
-                    game.setScreen(new HelpScreen(game));
-                    //if(Settings.soundEnabled)
-                        //Assets.click.play(1);
+                	System.exit(0);
                     return;
                 }
             }
@@ -61,11 +54,14 @@ public class MainMenuScreen extends Screen
     
     private boolean inBounds(TouchEvent event, int x, int y, int width, int height) 
     {
-        if(event.x > x && event.x < x + width - 1 && 
-           event.y > y && event.y < y + height - 1) 
+        if(event.x > x && event.x < x + width - 1 && event.y > y && event.y < y + height - 1) 
+        {
             return true;
+        }
         else
+        {
             return false;
+        }
     }
 
     @Override
@@ -73,17 +69,14 @@ public class MainMenuScreen extends Screen
     public void present(float deltaTime) 
     {
         Graphics g = game.getGraphics();
-        g.drawPixmap(Assets.mainMenu, 0, 0);        
-        /*g.drawPixmap(Assets.buttons, 0, 416, 50,50, 64, 64);
-        if(Settings.soundEnabled)
-            g.drawPixmap(Assets.buttons, 0, 416, 0, 0, 64, 64);
-        else
-            g.drawPixmap(Assets.buttons, 0, 416, 64, 0, 64, 64);*/
+        //g.drawPixmap(Assets.splash, 0, 0);
+        g.drawPixmap(Assets.mainMenu, 0, 0);
     }
 
     @Override
     public void pause() 
-    {   //save the current game settings to pause     
+    {   
+    	//save the current game settings to pause     
         Settings.save(game.getFileIO());
     }
 

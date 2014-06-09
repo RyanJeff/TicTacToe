@@ -25,6 +25,8 @@ import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.gl.Texture;
 import com.badlogic.androidgames.framework.impl.GLGame;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
+
+
 // The view of the MVC
 //target space for buttons and HUD based on source x and y
 public class GameScreen extends Screen 
@@ -36,13 +38,10 @@ public class GameScreen extends Screen
         Paused,
         GameOver
     }
-	//private static final int VERTEX_SIZE = 0;
+
     //start in a ready state
     GameState state = GameState.Ready;
-    World world;
-    //int oldScore = 0;
-    //String score = "0";
-    
+    World world;  
     
     public GameScreen(Game game) 
     {
@@ -56,7 +55,7 @@ public class GameScreen extends Screen
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
         game.getInput().getKeyEvents();
         //update ready state check touch containers to see if there is more than one event
-      //only start game when user touches the screen
+        //only start game when user touches the screen
         if(state == GameState.Ready)
             updateReady(touchEvents);
         if(state == GameState.Running)
@@ -69,38 +68,46 @@ public class GameScreen extends Screen
     
     private void updateReady(List<TouchEvent> touchEvents) 
     {
+    	//touch screen to start
         if(touchEvents.size() > 0)
-            state = GameState.Running;
+        {
+        	state = GameState.Running;
+        }   
     }
     
     private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) 
-    {        
-        int len = touchEvents.size();
+    {    
+    	int len = touchEvents.size();
         for(int i = 0; i < len; i++) 
         {
             TouchEvent event = touchEvents.get(i);
             if(event.type == TouchEvent.TOUCH_UP) 
             {
-                if(event.x < 64 && event.y < 64) 
-                {
-                    //if(Settings.soundEnabled)
-                        //Assets.click.play(1);
-                    state = GameState.Paused;
-                    return;
+                if(event.x > 90 && event.x < 235)
+                {	
+                	//pause
+                	if(event.y > 440) 
+                	{
+                		//if(Settings.soundEnabled)
+                        	//Assets.click.play(1);
+                		state = GameState.Paused;
+	                    return;
+                	}  
                 }
             }
-           /* if(event.type == TouchEvent.TOUCH_DOWN) 
-            {
-                if(event.x < 64 && event.y > 416) 
-                {
-                    world.snake.turnLeft();
-                }
-                if(event.x > 256 && event.y > 416) 
-                {
-                    world.snake.turnRight();
-                }
-            }*/
         }
+        
+		/* if(event.type == TouchEvent.TOUCH_DOWN) 
+		{
+		    if(event.x < 64 && event.y > 416) 
+		    {
+		        world.snake.turnLeft();
+		    }
+		    if(event.x > 256 && event.y > 416) 
+		    {
+		        world.snake.turnRight();
+		    }
+		}*/
         
         world.update(deltaTime);
         if(world.gameOver) 
@@ -109,33 +116,28 @@ public class GameScreen extends Screen
                 //Assets.bitten.play(1);
             state = GameState.GameOver;
         }
-        /*if(oldScore != world.score) 
-        {
-            oldScore = world.score;
-            score = "" + oldScore;
-            if(Settings.soundEnabled)
-                Assets.eat.play(1);
-        }*/
     }
     
     private void updatePaused(List<TouchEvent> touchEvents) 
     {
-        int len = touchEvents.size();
+    	int len = touchEvents.size();
         for(int i = 0; i < len; i++) 
         {
             TouchEvent event = touchEvents.get(i);
             if(event.type == TouchEvent.TOUCH_UP) 
-            {
-                if(event.x > 500 && event.x < 400) 
+            { 
+            	if(event.x > 70 && event.x < 260) 
                 {
-                    if(event.y > 400 && event.y < 500) 
+                	//resume
+                    if(event.y > 215 && event.y < 280) 
                     {
                         //if(Settings.soundEnabled)
                             //Assets.click.play(1);
-                        state = GameState.Running;
-                        return;
-                    }  
-                    if(event.y > 348 && event.y < 200) 
+                		state = GameState.Running;
+                		return;
+                    } 
+                    //main menu
+                    if(event.y > 325 && event.y < 400) 
                     {
                         //if(Settings.soundEnabled)
                             //Assets.click.play(1);
@@ -144,8 +146,9 @@ public class GameScreen extends Screen
                     }
                 }
             }
-        }
+        } 
     }
+    
     //updates game over and returns main menu
     private void updateGameOver(List<TouchEvent> touchEvents) 
     {
@@ -166,7 +169,6 @@ public class GameScreen extends Screen
             }
         }
     }
-    
 
     @Override
     public void present(float deltaTime) 
@@ -183,165 +185,58 @@ public class GameScreen extends Screen
         if(state == GameState.Paused)
             drawPausedUI();
         if(state == GameState.GameOver)
-            drawGameOverUI();
-        
-        //drawText(g, score, g.getWidth() / 2 - score.length()*20 / 2, g.getHeight() - 42);                
+            drawGameOverUI();               
     }
-    // get the snake , background and stain in to the world
+
     private void drawWorld(World world) 
     {
-        /*Graphics g = game.getGraphics();
-        Snake snake = world.snake;
-        SnakePart head = snake.parts.get(0);
-        Stain stain = world.stain;
-        StrikerStain strikerStain = world.strikerStain;
-        
-        Pixmap stainPixmap = null;
-        if(stain.type == Stain.TYPE_1)
-            stainPixmap = Assets.stain1;
-        if(stain.type == Stain.TYPE_2)
-            stainPixmap = Assets.stain2;
-        if(stain.type == Stain.TYPE_3)
-            stainPixmap = Assets.stain3;
-        //convert grid component to the source y and x by multiplying times grid size
-        int x = stain.x * 32;
-        int y = stain.y * 32;    
-        
-       
-        g.drawPixmap(stainPixmap, x, y);             
-        
-        int len = snake.parts.size();
-        for(int i = 1; i < len; i++) 
-        {
-            SnakePart part = snake.parts.get(i);
-            x = part.x * 32;
-            y = part.y * 32;
-            g.drawPixmap(Assets.tail, x, y);
-        }
-        
-        //Draw the striker stain
-        Pixmap strikerStainPixmap = null;
-        
-        if(strikerStain.type == StrikerStain.TYPE_A)
-        	strikerStainPixmap = Assets.strikerstain;
-        if(strikerStain.type == StrikerStain.TYPE_B)
-        	strikerStainPixmap = Assets.strikerstain2;
-        if(strikerStain.type == StrikerStain.TYPE_C)
-        	strikerStainPixmap = Assets.strikerstain3;
-       
-        //convert grid component to the source y and x by multiplying times grid size
-        int sx = strikerStain.x * 32;
-        int sy = strikerStain.y * 32;      
-        g.drawPixmap(strikerStainPixmap, sx, sy); 
-        
-        
-        int glen = snake.parts.size();
-        for(int i = 1; i < glen; i++) 
-        {
-            SnakePart part = snake.parts.get(i);
-            x = part.x * 32;
-            y = part.y * 32;
-            g.drawPixmap(Assets.tail, x, y);
-        }
-        
-        Pixmap headPixmap = null;
-        if(snake.direction == Snake.UP) 
-            headPixmap = Assets.headUp;
-        if(snake.direction == Snake.LEFT) 
-            headPixmap = Assets.headLeft;
-        if(snake.direction == Snake.DOWN) 
-            headPixmap = Assets.headDown;
-        if(snake.direction == Snake.RIGHT) 
-            headPixmap = Assets.headRight;        
-        x = head.x * 32 + 16;
-        y = head.y * 32 + 16;
-        g.drawPixmap(headPixmap, x - headPixmap.getWidth() / 2, y - headPixmap.getHeight() / 2);*/
+ 
     }
     
     private void drawReadyUI() 
     {
-    	// draw the ready touch screen menu
         Graphics g = game.getGraphics();
-        
         g.drawPixmap(Assets.ready, 0, 0);
-        g.drawLine(0, 416, 480, 416, Color.BLACK);
     }
     
     private void drawRunningUI() 
     {
         Graphics g = game.getGraphics();
-
-        //g.drawPixmap(Assets.buttons, 0, 0, 64, 128, 64, 64);
-        g.drawLine(0, 416, 480, 416, Color.BLACK);
-        //g.drawPixmap(Assets.buttons, 0, 416, 64, 64, 64, 64);
-        //g.drawPixmap(Assets.buttons, 256, 416, 0, 64, 64, 64);
+        g.drawPixmap(Assets.background, 0, 0);
     }
     
     private void drawPausedUI() 
     {
-        Graphics g = game.getGraphics();
-        
+        Graphics g = game.getGraphics();      
         g.drawPixmap(Assets.pause, 0, 0);
-        g.drawLine(0, 416, 480, 416, Color.BLACK);
     }
 
     private void drawGameOverUI() 
     {
         Graphics g = game.getGraphics();
-        
         g.drawPixmap(Assets.gameOver, 0, 0);
-        //g.drawPixmap(Assets.buttons, 128, 200, 0, 128, 64, 64);
-        g.drawLine(0, 416, 480, 416, Color.BLACK);
-    }
-    
-    public void drawText(Graphics g, String line, int x, int y) 
-    {
-       /* int len = line.length();
-        for (int i = 0; i < len; i++) 
-        {
-            char character = line.charAt(i);
-
-            if (character == ' ') 
-            {
-                x += 20;
-                continue;
-            }
-
-            int srcX = 0;
-            int srcWidth = 0;
-            if (character == '.') 
-            {
-                srcX = 200;
-                srcWidth = 10;
-            } 
-            else 
-            {
-                srcX = (character - '0') * 20;
-                srcWidth = 20;
-            }
-
-            g.drawPixmap(Assets.numbers, x, y, srcX, 0, srcWidth, 32);
-            x += srcWidth;
-        }*/
     }
     
     @Override
     public void pause() 
     {
         if(state == GameState.Running)
+        {
             state = GameState.Paused;
-        
+        }
         if(world.gameOver) 
         {
-            //Settings.addScore(world.score);
             Settings.save(game.getFileIO());
-        }
+        } 
     }
 
     @Override
     public void resume() 
     {
-        
+        if(state == GameState.Paused)
+        {
+        	state = GameState.Running;
+        }
     }
 
     @Override

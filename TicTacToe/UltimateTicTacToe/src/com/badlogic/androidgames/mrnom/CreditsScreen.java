@@ -4,13 +4,12 @@ import java.util.List;
 
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Graphics;
-import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
+import com.badlogic.androidgames.framework.Screen;
 
-public class HelpScreen2 extends Screen 
+public class CreditsScreen extends Screen
 {
-
-    public HelpScreen2(Game game) 
+	public CreditsScreen(Game game) 
     {
         super(game);
     }
@@ -20,23 +19,23 @@ public class HelpScreen2 extends Screen
     {
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
         game.getInput().getKeyEvents();
-
+        
         int len = touchEvents.size();
         for(int i = 0; i < len; i++) 
         {
             TouchEvent event = touchEvents.get(i);
             if(event.type == TouchEvent.TOUCH_UP) 
             {
-            	if(event.x > 140 && event.x < 365) 
+                if(event.x > 135 && event.x < 360) 
                 {
-                	if(event.y > 420)
+                	//back
+                	if(event.y > 380 && event.y < 440)
                 	{
-                		game.setScreen(new HelpScreen3(game));
-	                    //if(Settings.soundEnabled)
-	                        //Assets.click.play(1);
-	                    return;
+                		game.setScreen(new OptionsScreen(game));
+                		//if(Settings.soundEnabled)
+                        	//Assets.click.play(1);
+                		return;
                 	}
-                    
                 }
             }
         }
@@ -46,8 +45,7 @@ public class HelpScreen2 extends Screen
     public void present(float deltaTime) 
     {
         Graphics g = game.getGraphics();      
-        //g.drawPixmap(Assets.background, 0, 0);
-        g.drawPixmap(Assets.help2, 0, 0);
+        g.drawPixmap(Assets.credits, 0, 0);
     }
 
     @Override

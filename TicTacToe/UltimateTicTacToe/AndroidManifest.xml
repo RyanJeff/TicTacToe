@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.badlogic.androidgames.mrnom"
+<manifest package="com.badlogic.androidgames.mrnom"
       android:versionCode="1"
-      android:versionName="1.0">
-    <application android:icon="@drawable/icon" android:label="Mr. Nom" android:debuggable="true">
+      android:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:icon="@drawable/icon" android:label="Mr. Nom">
         <activity android:name=".MrNomGame"
-                  android:label="Squirell Frenzy"
+                  android:label="Ultimate Tic Tac Toe"
                   android:configChanges="keyboard|keyboardHidden|orientation"
                   android:screenOrientation="portrait">
             <intent-filter>
