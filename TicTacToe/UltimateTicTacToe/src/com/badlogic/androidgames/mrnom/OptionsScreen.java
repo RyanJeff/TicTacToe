@@ -32,30 +32,57 @@ public class OptionsScreen extends Screen
                 	if(event.y > 140 && event.y < 195)
                 	{
                 		game.setScreen(new HelpScreen(game));
-	                    //if(Settings.soundEnabled)
-	                        //Assets.click.play(1);
+	                    if(Settings.soundEnabled)
+	                    {
+	                        Assets.click.play(1);
+	                    }
 	                    return;
                 	}
                 	//credits
                 	if(event.y > 205 && event.y < 260)
                 	{
                 		game.setScreen(new CreditsScreen(game));
-	                    //if(Settings.soundEnabled)
-	                        //Assets.click.play(1);
+	                    if(Settings.soundEnabled)
+	                    {
+	                        Assets.click.play(1);
+	                    }
 	                    return;
                 	}
                 	//back
                 	if(event.y > 410 && event.y < 460)
                 	{
                 		game.setScreen(new MainMenuScreen(game));
-	                    //if(Settings.soundEnabled)
-	                        //Assets.click.play(1);
+	                    if(Settings.soundEnabled)
+	                    {
+	                        Assets.click.play(1);
+	                    }
 	                    return;
                 	}
                 }
-                //add on/off buttons here
-                //may have to change menu to say music/sfx 
-                	//cuz only have a sound enabled setting
+                //toggles 
+                if(event.x > 210 && event.x < 260)
+                {	
+                	//sound off 
+                	if(event.y > 270 && event.y < 310)
+                	{
+                		if(Settings.soundEnabled)
+                		{
+                        	Assets.click.play(1);
+                		}
+                		Settings.soundEnabled = !Settings.soundEnabled;
+                	}
+                	//sound on (default is on)
+	            	else
+	            	{
+	            		Settings.soundEnabled = true;
+	            		if(Settings.soundEnabled)
+	            		{
+                        	Assets.click.play(1);
+	            		}
+	            	}
+                }	
+            	
+                
             }
         }
     }
@@ -65,15 +92,15 @@ public class OptionsScreen extends Screen
     {
         Graphics g = game.getGraphics();      
         g.drawPixmap(Assets.options, 0, 0);
-        /*g.drawPixmap(Assets.buttons, 0, 416, 50,50, 64, 64);
         if(Settings.soundEnabled)
         {
-            g.drawPixmap(Assets.buttons, 0, 416, 0, 0, 64, 64);
+            g.drawPixmap(Assets.buttons, 207, 260, 0, 0, 64, 64);
 		}
         else
         {
-            g.drawPixmap(Assets.buttons, 0, 416, 64, 0, 64, 64);
-		}*/
+            g.drawPixmap(Assets.buttons, 207, 260, 64, 0, 64, 64);
+		}
+        g.drawPixmap(Assets.buttons, 207, 308, 64, 0, 64, 64);
     }
 
     @Override

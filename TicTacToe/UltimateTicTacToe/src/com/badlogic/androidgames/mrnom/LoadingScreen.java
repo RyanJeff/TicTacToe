@@ -29,7 +29,7 @@ public class LoadingScreen extends Screen
         Assets.pause = g.newPixmap("PauseMenu.png", PixmapFormat.ARGB4444);
         Assets.gameOver = g.newPixmap("gameover.png", PixmapFormat.ARGB4444);
         
-        //Assets.click = game.getAudio().newSound("click.ogg");
+        Assets.click = game.getAudio().newSound("click.ogg");
         //Assets.eat = game.getAudio().newSound("eat.ogg");
         //Assets.bitten = game.getAudio().newSound("bitten.ogg");
         

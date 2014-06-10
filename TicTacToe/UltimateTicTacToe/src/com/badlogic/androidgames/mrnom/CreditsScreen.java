@@ -32,8 +32,10 @@ public class CreditsScreen extends Screen
                 	if(event.y > 380 && event.y < 440)
                 	{
                 		game.setScreen(new OptionsScreen(game));
-                		//if(Settings.soundEnabled)
-                        	//Assets.click.play(1);
+                		if(Settings.soundEnabled)
+                		{
+                        	Assets.click.play(1);
+                		}
                 		return;
                 	}
                 }
