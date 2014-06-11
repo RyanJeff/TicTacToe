@@ -1,4 +1,4 @@
-package com.badlogic.androidgames.uttt;
+package com.badlogic.androidgames.mrnom;
 
 import com.badlogic.androidgames.framework.Pixmap;
 import com.badlogic.androidgames.framework.Sound;

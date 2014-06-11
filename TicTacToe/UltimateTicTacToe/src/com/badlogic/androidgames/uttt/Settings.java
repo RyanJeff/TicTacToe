@@ -1,4 +1,4 @@
-package com.badlogic.androidgames.uttt;
+package com.badlogic.androidgames.mrnom;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,7 +18,7 @@ public class Settings
         try 
         {
             in = new BufferedReader(new InputStreamReader(
-                    files.readFile(".uttt")));
+                    files.readFile(".mrnom")));
             soundEnabled = Boolean.parseBoolean(in.readLine());
         } 
         catch (IOException e) 
@@ -48,7 +48,7 @@ public class Settings
         try 
         {
             out = new BufferedWriter(new OutputStreamWriter(
-                    files.writeFile(".uttt")));
+                    files.writeFile(".mrnom")));
             out.write(Boolean.toString(soundEnabled));
             out.write("\n");
         } 
