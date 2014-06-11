@@ -2,7 +2,7 @@ package com.badlogic.androidgames.mrnom;
 
 //import java.util.Random;
 
-public class World 
+public class MasterBoard
 {
 	//model of the world 
     //static final int WORLD_WIDTH = 10;
@@ -10,7 +10,7 @@ public class World
 
     public boolean gameOver = false;
 
-    public World() 
+    public MasterBoard() 
     {
         
     }

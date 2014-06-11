@@ -40,12 +40,12 @@ public class GameScreen extends Screen
 
     //start in a ready state
     GameState state = GameState.Ready;
-    World world;  
+    MasterBoard masterBoard;  
     
     public GameScreen(Game game) 
     {
         super(game);
-        world = new World();
+        masterBoard = new MasterBoard();
     }
 
     @Override
@@ -102,16 +102,16 @@ public class GameScreen extends Screen
 		{
 		    if(event.x < 64 && event.y > 416) 
 		    {
-		        world.snake.turnLeft();
+		        masterBoard.snake.turnLeft();
 		    }
 		    if(event.x > 256 && event.y > 416) 
 		    {
-		        world.snake.turnRight();
+		        masterBoard.snake.turnRight();
 		    }
 		}*/
         
-        world.update(deltaTime);
-        if(world.gameOver) 
+        masterBoard.update(deltaTime);
+        if(masterBoard.gameOver) 
         {
             //if(Settings.soundEnabled)
                 //Assets.bitten.play(1);
@@ -181,10 +181,10 @@ public class GameScreen extends Screen
     public void present(float deltaTime) 
     {
         Graphics g = game.getGraphics();
-        //draw the game world background
+        //draw the game masterBoard background
         g.drawPixmap(Assets.background, 0, 0);
         
-        drawWorld(world);
+        drawMasterBoard(masterBoard);
         if(state == GameState.Ready) 
             drawReadyUI();
         if(state == GameState.Running)
@@ -195,7 +195,7 @@ public class GameScreen extends Screen
             drawGameOverUI();               
     }
 
-    private void drawWorld(World world) 
+    private void drawMasterBoard(MasterBoard masterBoard) 
     {
  
     }
@@ -231,7 +231,7 @@ public class GameScreen extends Screen
         {
             state = GameState.Paused;
         }
-        if(world.gameOver) 
+        if(masterBoard.gameOver) 
         {
             Settings.save(game.getFileIO());
         } 
