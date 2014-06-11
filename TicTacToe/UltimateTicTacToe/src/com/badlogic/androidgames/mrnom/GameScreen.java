@@ -26,8 +26,7 @@ import com.badlogic.androidgames.framework.gl.Texture;
 import com.badlogic.androidgames.framework.impl.GLGame;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
 
-
-// The view of the MVC
+//The view of the MVC
 //target space for buttons and HUD based on source x and y
 public class GameScreen extends Screen 
 {
@@ -88,8 +87,10 @@ public class GameScreen extends Screen
                 	//pause
                 	if(event.y > 440) 
                 	{
-                		//if(Settings.soundEnabled)
-                        	//Assets.click.play(1);
+                		if(Settings.soundEnabled)
+                        {
+                            Assets.click.play(1);
+                        }
                 		state = GameState.Paused;
 	                    return;
                 	}  
@@ -131,16 +132,20 @@ public class GameScreen extends Screen
                 	//resume
                     if(event.y > 215 && event.y < 280) 
                     {
-                        //if(Settings.soundEnabled)
-                            //Assets.click.play(1);
+                    	if(Settings.soundEnabled)
+                        {
+                            Assets.click.play(1);
+                        }
                 		state = GameState.Running;
                 		return;
                     } 
                     //main menu
                     if(event.y > 325 && event.y < 400) 
                     {
-                        //if(Settings.soundEnabled)
-                            //Assets.click.play(1);
+                    	if(Settings.soundEnabled)
+                        {
+                            Assets.click.play(1);
+                        }
                         game.setScreen(new MainMenuScreen(game));                        
                         return;
                     }
@@ -161,8 +166,10 @@ public class GameScreen extends Screen
                 if(event.x >= 128 && event.x <= 192 &&
                    event.y >= 200 && event.y <= 264) 
                 {
-                    //if(Settings.soundEnabled)
-                        //Assets.click.play(1);
+                	if(Settings.soundEnabled)
+                    {
+                        Assets.click.play(1);
+                    }
                     game.setScreen(new MainMenuScreen(game));
                     return;
                 }

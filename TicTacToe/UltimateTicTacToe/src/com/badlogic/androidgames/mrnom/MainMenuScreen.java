@@ -30,21 +30,29 @@ public class MainMenuScreen extends Screen
             	if(inBounds(event, 60, 225, 205, 55)) 
                 {
                     game.setScreen(new GameScreen(game));
-                    //if(Settings.soundEnabled)
-                        //Assets.click.play(1);
+                    if(Settings.soundEnabled)
+                    {
+                        Assets.click.play(1);
+                    }
                     return;
                 }
             	//options
             	if(inBounds(event, 60, 305, 205, 55)) 
                 {
                     game.setScreen(new OptionsScreen(game));
-                    //if(Settings.soundEnabled)
-                        //Assets.click.play(1);
+                    if(Settings.soundEnabled)
+                    {
+                        Assets.click.play(1);
+                    }
                     return;
                 }
             	//quit
                 if(inBounds(event, 60, 390, 205, 55)) 
                 {
+                	if(Settings.soundEnabled)
+                    {
+                        Assets.click.play(1);
+                    }
                 	System.exit(0);
                     return;
                 }

@@ -18,7 +18,7 @@ public class Assets
     public static Pixmap pause;
     public static Pixmap gameOver;
 
-    //public static Sound click;
+    public static Sound click;
     //public static Sound eat;
     //public static Sound bitten;
 }
