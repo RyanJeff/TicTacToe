@@ -1,4 +1,4 @@
-package com.badlogic.androidgames.mrnom;
+package com.badlogic.androidgames.uttt;
 
 import java.nio.Buffer;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.badlogic.androidgames.UTTT;
+package com.badlogic.androidgames.uttt;
 
 import java.util.List;
 
