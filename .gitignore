@@ -213,4 +213,11 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+<<<<<<< HEAD
 TicTacToe/UltimateTicTacToe/src/com/badlogic/androidgames/uttt/GameScreen.java
+=======
+TicTacToe/UltimateTicTacToe/gen/com/badlogic/androidgames/mrnom/BuildConfig.java
+TicTacToe/UltimateTicTacToe/gen/com/badlogic/androidgames/mrnom/BuildConfig.java
+TicTacToe/UltimateTicTacToe/gen/com/badlogic/androidgames/mrnom/BuildConfig.java
+>>>>>>> 17c5f945e9c04a09496b03db0506756200fdf2a4
+TicTacToe/UltimateTicTacToe/src/com/badlogic/androidgames/uttt/World.java
