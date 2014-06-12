@@ -59,30 +59,24 @@ public class OptionsScreen extends Screen
 	                    return;
                 	}
                 }
-                //toggles 
+                //toggle sound 
                 if(event.x > 210 && event.x < 260)
                 {	
-                	//sound off 
+                	//off 
                 	if(event.y > 270 && event.y < 310)
                 	{
-                		if(Settings.soundEnabled)
-                		{
-                        	Assets.click.play(1);
-                		}
                 		Settings.soundEnabled = !Settings.soundEnabled;
                 	}
-                	//sound on (default is on)
+                	//on (default)
 	            	else
 	            	{
 	            		Settings.soundEnabled = true;
-	            		if(Settings.soundEnabled)
-	            		{
-                        	Assets.click.play(1);
-	            		}
 	            	}
-                }	
-            	
-                
+                	if(Settings.soundEnabled)
+            		{
+                    	Assets.click.play(1);
+            		}
+                }
             }
         }
     }

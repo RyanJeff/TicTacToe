@@ -8,7 +8,7 @@ import com.badlogic.androidgames.framework.Input.TouchEvent;
 import com.badlogic.androidgames.framework.Screen;
 
 public class MainMenuScreen extends Screen 
-{
+{		
     public MainMenuScreen(Game game) 
     {
         super(game);               
@@ -16,7 +16,7 @@ public class MainMenuScreen extends Screen
 
     @Override
     public void update(float deltaTime) 
-    {
+    {   
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
         game.getInput().getKeyEvents();       
         
@@ -29,7 +29,8 @@ public class MainMenuScreen extends Screen
             	//play
             	if(inBounds(event, 60, 225, 205, 55)) 
                 {
-                    game.setScreen(new GameScreen(game));
+            		
+            		game.setScreen(new GameScreen(game));
                     if(Settings.soundEnabled)
                     {
                         Assets.click.play(1);
@@ -77,7 +78,6 @@ public class MainMenuScreen extends Screen
     public void present(float deltaTime) 
     {
         Graphics g = game.getGraphics();
-        //g.drawPixmap(Assets.splash, 0, 0);
         g.drawPixmap(Assets.mainMenu, 0, 0);
     }
 

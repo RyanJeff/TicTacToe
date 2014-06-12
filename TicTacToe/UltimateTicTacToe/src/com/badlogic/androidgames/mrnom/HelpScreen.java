@@ -31,8 +31,10 @@ public class HelpScreen extends Screen
                 	if(event.y > 420)
                 	{
                 		game.setScreen(new HelpScreen2(game));
-	                    //if(Settings.soundEnabled)
-	                        //Assets.click.play(1);
+	                    if(Settings.soundEnabled)
+	                    {
+	                        Assets.click.play(1);
+	                    }
 	                    return;
                 	}
                     

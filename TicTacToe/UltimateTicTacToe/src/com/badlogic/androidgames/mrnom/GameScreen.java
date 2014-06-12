@@ -38,7 +38,6 @@ public class GameScreen extends Screen
         GameOver
     }
 
-    //start in a ready state
     GameState state = GameState.Ready;
     World world;  
     
@@ -53,7 +52,6 @@ public class GameScreen extends Screen
     {
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
         game.getInput().getKeyEvents();
-        //update ready state check touch containers to see if there is more than one event
         //only start game when user touches the screen
         if(state == GameState.Ready)
             updateReady(touchEvents);
@@ -62,9 +60,9 @@ public class GameScreen extends Screen
         if(state == GameState.Paused)
             updatePaused(touchEvents);
         if(state == GameState.GameOver)
-            updateGameOver(touchEvents);        
+            updateGameOver(deltaTime);        
     }
-    
+
     private void updateReady(List<TouchEvent> touchEvents) 
     {
     	//touch screen to start
@@ -155,9 +153,9 @@ public class GameScreen extends Screen
     }
     
     //updates game over and returns main menu
-    private void updateGameOver(List<TouchEvent> touchEvents) 
+    private void updateGameOver(float deltaTime) 
     {
-        int len = touchEvents.size();
+        /*int len = touchEvents.size();
         for(int i = 0; i < len; i++) 
         {
             TouchEvent event = touchEvents.get(i);
@@ -174,14 +172,13 @@ public class GameScreen extends Screen
                     return;
                 }
             }
-        }
+        }*/
     }
 
     @Override
     public void present(float deltaTime) 
     {
         Graphics g = game.getGraphics();
-        //draw the game world background
         g.drawPixmap(Assets.background, 0, 0);
         
         drawWorld(world);
@@ -197,7 +194,7 @@ public class GameScreen extends Screen
 
     private void drawWorld(World world) 
     {
- 
+    	
     }
     
     private void drawReadyUI() 
