@@ -1,44 +1,32 @@
 package com.badlogic.androidgames.uttt;
 
+import com.badlogic.androidgames.framework.Game;
+import com.badlogic.androidgames.framework.Graphics;
+import com.badlogic.androidgames.uttt.Board;
+
 //import java.util.Random;
 
 public class MasterBoard
 {
-	
-
-	//model of the board
-    /*
-    static final int SEC1_WIDTH = 133;
-    static final int SEC2_WIDTH = 133;
-    static final int SEC3_WIDTH = 133;
-    static final int SEC4_WIDTH = 133;
-    static final int SEC5_WIDTH = 133;
-    static final int SEC6_WIDTH = 133;
-    static final int SEC7_WIDTH = 133;
-    static final int SEC8_WIDTH = 133;
-    static final int SEC9_WIDTH = 133;
-    static final int SEC1_HEIGHT = 133;
-    static final int SEC2_HEIGHT = 133;
-    static final int SEC3_HEIGHT = 133;
-    static final int SEC4_HEIGHT = 133;
-    static final int SEC5_HEIGHT = 133;
-    static final int SEC6_HEIGHT = 133;
-    static final int SEC7_HEIGHT = 133;
-    static final int SEC8_HEIGHT = 133;
-    static final int SEC9_HEIGHT = 133;
-    */
-
+	static final int WORLD_WIDTH = 10;
+    static final int WORLD_HEIGHT = 13;
+    boolean fields[][] = new boolean[WORLD_WIDTH][WORLD_HEIGHT];
     public boolean gameOver = false;
-
-    public class MiniBoard 
-    {
-    	
-	}
+    public X x;
+    public O o;
+    public Game game;
     
     public MasterBoard() 
     {
-        
+    	//x = new X(/*0,0,0,0*/);
     }
+    
+    public void init()
+    {
+    	
+    }
+    
+    
     
     public void update(float deltaTime) 
     {
@@ -46,5 +34,15 @@ public class MasterBoard
         {
             return;
         }
+    }
+    
+    public void present()
+    {
+    	
+    }
+    
+    public void destroy()
+    {
+    	
     }
 }

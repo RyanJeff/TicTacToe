@@ -21,6 +21,8 @@ public interface Graphics
             int srcWidth, int srcHeight);
 
     public void drawPixmap(Pixmap pixmap, int x, int y);
+    
+    //public void drawXOPixmap(Pixmap pixmap, int x, int y);
 
     public int getWidth();
 

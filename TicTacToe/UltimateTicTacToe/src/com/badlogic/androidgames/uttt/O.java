@@ -2,14 +2,14 @@ package com.badlogic.androidgames.uttt;
 
 public class O 
 {
-	public static final int TYPE_1 = 0;
 	public int x, y;
-	public int type;
+	public int width, height;
 	 
-	public O(int x, int y, int type) 
+	public O(int x, int y, int width, int height) 
 	{     
 		this.x = x;
 		this.y = y;
-		this.type = type;
+		this.width = width;
+		this.height = height;
 	}
 }

@@ -27,6 +27,8 @@ import com.badlogic.androidgames.framework.impl.GLGame;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
 import com.badlogic.androidgames.uttt.X;
 import com.badlogic.androidgames.uttt.O;
+import com.badlogic.androidgames.uttt.Board;
+import android.util.Log;
 
 //The view of the MVC
 //target space for buttons and HUD based on source x and y
@@ -41,14 +43,17 @@ public class GameScreen extends Screen
     }
 
     GameState state = GameState.Ready;
-    MasterBoard masterBoard;
-    //X x;
-    //O o;
+  //  MasterBoard masterBoard;
+    Board board;
+    public X x;
+    public O o;
     
     public GameScreen(Game game) 
     {
         super(game);
-        masterBoard = new MasterBoard();
+        board = new Board(game);
+        //x = new X(0, 0, 32, 32);
+        //o = new O(32, 32, 32, 32);
     }
 
     @Override
@@ -107,18 +112,17 @@ public class GameScreen extends Screen
             		if(event.x >= 16 && event.x <= 112) 
                     {
             			//MB_id = 0;
-            	        //g.drawPixmap(Assets.x, event.x, event.y);
-            			
+            			board.grids[0][0].grid[0] = 1;
                     }
             		if(event.x > 112 && event.x <= 208) 
                     {
             			//MB_id = 1;
-            			g.drawPixmap(Assets.x, event.x, event.y);
+            			board.grids[0][1].grid[0] = 1;
                     }
             		if(event.x > 208 && event.x <= 304) 
                     {
             			//MB_id = 2;
-            			g.drawPixmap(Assets.x, event.x, event.y);
+            			board.grids[0][2].grid[0] = 1;
                     }
                 }
             	if(event.y > 224 && event.y <= 320) 
@@ -126,17 +130,17 @@ public class GameScreen extends Screen
             		if(event.x >= 16 && event.x <= 112) 
                     {
             			//MB_id = 3;
-            			g.drawPixmap(Assets.x, event.x, event.y);
+            			board.grids[1][0].grid[0] = 1;
                     }
             		if(event.x > 112 && event.x <= 208) 
                     {
             			//MB_id = 4;
-            			g.drawPixmap(Assets.x, event.x, event.y);
+            			board.grids[1][1].grid[0] = 1;
                     }
             		if(event.x > 208 && event.x <= 304) 
                     {
             			//MB_id = 5;
-            			g.drawPixmap(Assets.x, event.x, event.y);
+            			board.grids[1][2].grid[0] = 1;
                     }
                 }
             	if(event.y > 320 && event.y <= 416) 
@@ -144,17 +148,17 @@ public class GameScreen extends Screen
             		if(event.x >= 16 && event.x <= 112) 
                     {
             			//MB_id = 6;
-            			g.drawPixmap(Assets.x, event.x, event.y);
+            			board.grids[2][0].grid[0] = 1;
                     }
             		if(event.x > 112 && event.x <= 208) 
                     {
             			//MB_id = 7;
-            			g.drawPixmap(Assets.x, event.x, event.y);
+            			board.grids[2][1].grid[0] = 1;
                     }
             		if(event.x > 208 && event.x <= 304) 
                     {
             			//MB_id = 8;
-            			g.drawPixmap(Assets.x, event.x, event.y);
+            			board.grids[2][2].grid[0] = 1;
                     }
                 }
                 
@@ -176,7 +180,7 @@ public class GameScreen extends Screen
 		        masterBoard.snake.turnRight();
 		    }
 		}*/
-        //world.update(deltaTime);
+
         //masterBoard.update(deltaTime);
         //if(masterBoard.gameOver) 
         //{
@@ -186,7 +190,9 @@ public class GameScreen extends Screen
         //}
     }
     
-    private void updatePaused(List<TouchEvent> touchEvents) 
+
+
+	private void updatePaused(List<TouchEvent> touchEvents) 
     {
     	int len = touchEvents.size();
         for(int i = 0; i < len; i++) 
@@ -248,10 +254,7 @@ public class GameScreen extends Screen
     public void present(float deltaTime) 
     {
         Graphics g = game.getGraphics();
-//<<<<<<< HEAD:TicTacToe/UltimateTicTacToe/src/com/badlogic/androidgames/mrnom/GameScreen.java
-//=======
         //draw the game masterBoard background
-//>>>>>>> origin/master:TicTacToe/UltimateTicTacToe/src/com/badlogic/androidgames/uttt/GameScreen.java
         //g.drawPixmap(Assets.background, 0, 0);
         
         //drawMasterBoard(masterBoard);
@@ -265,10 +268,12 @@ public class GameScreen extends Screen
             drawGameOverUI();               
     }
 
-    //private void drawMasterBoard(MasterBoard masterBoard) 
-    //{
-    	
-    //}
+    
+    
+    private void drawMasterBoard(MasterBoard masterBoard) 
+    {
+    	X x = masterBoard.x;
+    }
     
     private void drawReadyUI() 
     {
@@ -281,6 +286,7 @@ public class GameScreen extends Screen
     {
         Graphics g = game.getGraphics();
         g.drawPixmap(Assets.background, 0, 0);
+        board.present();
     }
     
     private void drawPausedUI() 
