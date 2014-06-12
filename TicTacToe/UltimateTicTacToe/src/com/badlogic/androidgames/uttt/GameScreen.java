@@ -27,6 +27,8 @@ import com.badlogic.androidgames.framework.impl.GLGame;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
 import com.badlogic.androidgames.uttt.X;
 import com.badlogic.androidgames.uttt.O;
+import android.util.Log;
+
 
 //The view of the MVC
 //target space for buttons and HUD based on source x and y
@@ -42,8 +44,8 @@ public class GameScreen extends Screen
 
     GameState state = GameState.Ready;
     MasterBoard masterBoard;
-    //X x;
-    //O o;
+    X x;
+    O o;
     
     public GameScreen(Game game) 
     {
@@ -87,7 +89,7 @@ public class GameScreen extends Screen
                 if(event.x > 90 && event.x < 235)
                 {	
                 	//pause
-                	if(event.y > 440) 
+                		if(event.y > 440) 
                 	{
                 		if(Settings.soundEnabled)
                         {
@@ -107,18 +109,21 @@ public class GameScreen extends Screen
             		if(event.x >= 16 && event.x <= 112) 
                     {
             			//MB_id = 0;
-            	        //g.drawPixmap(Assets.x, event.x, event.y);
+            	        g.drawPixmap(Assets.x, event.x, event.y);
+            			Log.v("ID", "Box Zero / 0");
             			
                     }
             		if(event.x > 112 && event.x <= 208) 
                     {
             			//MB_id = 1;
             			g.drawPixmap(Assets.x, event.x, event.y);
+            			Log.v("ID", "Box One / 1");
                     }
             		if(event.x > 208 && event.x <= 304) 
                     {
             			//MB_id = 2;
             			g.drawPixmap(Assets.x, event.x, event.y);
+            			Log.v("ID", "Box Two / 2");
                     }
                 }
             	if(event.y > 224 && event.y <= 320) 
@@ -127,16 +132,19 @@ public class GameScreen extends Screen
                     {
             			//MB_id = 3;
             			g.drawPixmap(Assets.x, event.x, event.y);
+            			Log.v("ID", "Box Three / 3");
                     }
             		if(event.x > 112 && event.x <= 208) 
                     {
             			//MB_id = 4;
             			g.drawPixmap(Assets.x, event.x, event.y);
+            			Log.v("ID", "Box Four / 4");
                     }
             		if(event.x > 208 && event.x <= 304) 
                     {
             			//MB_id = 5;
             			g.drawPixmap(Assets.x, event.x, event.y);
+            			Log.v("ID", "Box Five / 5");
                     }
                 }
             	if(event.y > 320 && event.y <= 416) 
@@ -145,16 +153,19 @@ public class GameScreen extends Screen
                     {
             			//MB_id = 6;
             			g.drawPixmap(Assets.x, event.x, event.y);
+            			Log.v("ID", "Box Six / 6");
                     }
             		if(event.x > 112 && event.x <= 208) 
                     {
             			//MB_id = 7;
             			g.drawPixmap(Assets.x, event.x, event.y);
+            			Log.v("ID", "Box Seven / 7");
                     }
             		if(event.x > 208 && event.x <= 304) 
                     {
             			//MB_id = 8;
             			g.drawPixmap(Assets.x, event.x, event.y);
+            			Log.v("ID", "Box Eight / 8");
                     }
                 }
                 
