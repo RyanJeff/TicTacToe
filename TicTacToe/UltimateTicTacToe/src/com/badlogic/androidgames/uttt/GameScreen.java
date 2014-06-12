@@ -27,13 +27,9 @@ import com.badlogic.androidgames.framework.impl.GLGame;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
 import com.badlogic.androidgames.uttt.X;
 import com.badlogic.androidgames.uttt.O;
-<<<<<<< HEAD
 import com.badlogic.androidgames.uttt.Board;
 import android.util.Log;
-=======
 import android.util.Log;
-
->>>>>>> origin/master
 
 //The view of the MVC
 //target space for buttons and HUD based on source x and y
@@ -48,16 +44,14 @@ public class GameScreen extends Screen
     }
 
     GameState state = GameState.Ready;
-<<<<<<< HEAD
   //  MasterBoard masterBoard;
     Board board;
     public X x;
     public O o;
-=======
+    
     MasterBoard masterBoard;
-    X x;
-    O o;
->>>>>>> origin/master
+    //X x;
+    //O o;
     
     public GameScreen(Game game) 
     {
@@ -122,8 +116,7 @@ public class GameScreen extends Screen
                 {
             		if(event.x >= 16 && event.x <= 112) 
                     {
-<<<<<<< HEAD
-            			//MB_id = 0;
+            			MB_id = 0;
             			board.grids[0][0].grid[0] = 1;
                     }
             		if(event.x > 112 && event.x <= 208) 
@@ -135,7 +128,6 @@ public class GameScreen extends Screen
                     {
             			//MB_id = 2;
             			board.grids[0][2].grid[0] = 1;
-=======
             			MB_id = 0;
             	        g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Zero / 0");
@@ -152,14 +144,12 @@ public class GameScreen extends Screen
             			MB_id = 2;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Two / 2");
->>>>>>> origin/master
                     }
                 }
             	if(event.y > 224 && event.y <= 320) 
                 {
             		if(event.x >= 16 && event.x <= 112) 
                     {
-<<<<<<< HEAD
             			//MB_id = 3;
             			board.grids[1][0].grid[0] = 1;
                     }
@@ -172,11 +162,11 @@ public class GameScreen extends Screen
                     {
             			//MB_id = 5;
             			board.grids[1][2].grid[0] = 1;
-=======
             			MB_id = 3;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Three / 3");
                     }
+            		
             		if(event.x > 112 && event.x <= 208) 
                     {
             			MB_id = 4;
@@ -188,14 +178,12 @@ public class GameScreen extends Screen
             			MB_id = 5;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Five / 5");
->>>>>>> origin/master
                     }
                 }
             	if(event.y > 320 && event.y <= 416) 
                 {
             		if(event.x >= 16 && event.x <= 112) 
                     {
-<<<<<<< HEAD
             			//MB_id = 6;
             			board.grids[2][0].grid[0] = 1;
                     }
@@ -208,7 +196,6 @@ public class GameScreen extends Screen
                     {
             			//MB_id = 8;
             			board.grids[2][2].grid[0] = 1;
-=======
             			MB_id = 6;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Six / 6");
@@ -224,7 +211,6 @@ public class GameScreen extends Screen
             			MB_id = 8;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Eight / 8");
->>>>>>> origin/master
                     }
                 }
             	/*
@@ -344,7 +330,7 @@ public class GameScreen extends Screen
     
     private void drawMasterBoard(MasterBoard masterBoard) 
     {
-    	X x = masterBoard.x;
+    	//X x = masterBoard.x;
     }
     
     private void drawReadyUI() 

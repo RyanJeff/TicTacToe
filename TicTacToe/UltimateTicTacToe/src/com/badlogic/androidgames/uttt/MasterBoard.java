@@ -35,7 +35,6 @@ public class MasterBoard
     {
     	
 	}
->>>>>>> origin/master
     
     public MasterBoard() 
     {
