@@ -102,26 +102,26 @@ public class GameScreen extends Screen
                 
                 
                 
-                
+                int MB_id = -1;
                 Graphics g = game.getGraphics();
                 if(event.y >= 128 && event.y <= 224) 
                 {
             		if(event.x >= 16 && event.x <= 112) 
                     {
-            			//MB_id = 0;
+            			MB_id = 0;
             	        g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Zero / 0");
             			
                     }
             		if(event.x > 112 && event.x <= 208) 
                     {
-            			//MB_id = 1;
+            			MB_id = 1;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box One / 1");
                     }
             		if(event.x > 208 && event.x <= 304) 
                     {
-            			//MB_id = 2;
+            			MB_id = 2;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Two / 2");
                     }
@@ -130,19 +130,19 @@ public class GameScreen extends Screen
                 {
             		if(event.x >= 16 && event.x <= 112) 
                     {
-            			//MB_id = 3;
+            			MB_id = 3;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Three / 3");
                     }
             		if(event.x > 112 && event.x <= 208) 
                     {
-            			//MB_id = 4;
+            			MB_id = 4;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Four / 4");
                     }
             		if(event.x > 208 && event.x <= 304) 
                     {
-            			//MB_id = 5;
+            			MB_id = 5;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Five / 5");
                     }
@@ -151,24 +151,30 @@ public class GameScreen extends Screen
                 {
             		if(event.x >= 16 && event.x <= 112) 
                     {
-            			//MB_id = 6;
+            			MB_id = 6;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Six / 6");
                     }
             		if(event.x > 112 && event.x <= 208) 
                     {
-            			//MB_id = 7;
+            			MB_id = 7;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Seven / 7");
                     }
             		if(event.x > 208 && event.x <= 304) 
                     {
-            			//MB_id = 8;
+            			MB_id = 8;
             			g.drawPixmap(Assets.x, event.x, event.y);
             			Log.v("ID", "Box Eight / 8");
                     }
                 }
-                
+            	/*
+            	if(MB_id == 0);
+            	{
+            		
+            	}
+            	
+                */
                 
                 
                 
