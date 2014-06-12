@@ -1,4 +1,4 @@
-package com.badlogic.androidgames.mrnom;
+package com.badlogic.androidgames.uttt;
 
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Graphics;
@@ -28,7 +28,8 @@ public class LoadingScreen extends Screen
         Assets.ready = g.newPixmap("ready.png", PixmapFormat.ARGB4444);  //touch to start
         Assets.pause = g.newPixmap("PauseMenu.png", PixmapFormat.ARGB4444);
         Assets.gameOver = g.newPixmap("gameover.png", PixmapFormat.ARGB4444);
-        
+        Assets.x = g.newPixmap("x.png", PixmapFormat.ARGB4444);
+        Assets.o = g.newPixmap("o.png", PixmapFormat.ARGB4444);
         Assets.click = game.getAudio().newSound("click.ogg");
         //Assets.click2 = game.getAudio().newSound("CreepyNoise.ogg");
         //Assets.bitten = game.getAudio().newSound("bitten.ogg");

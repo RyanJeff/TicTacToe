@@ -1,4 +1,4 @@
-package com.badlogic.androidgames.mrnom;
+package com.badlogic.androidgames.uttt;
 
 import com.badlogic.androidgames.framework.Pixmap;
 import com.badlogic.androidgames.framework.Sound;
@@ -17,7 +17,8 @@ public class Assets
     public static Pixmap ready;
     public static Pixmap pause;
     public static Pixmap gameOver;
-
+    public static Pixmap x;
+    public static Pixmap o;
     public static Sound click;
     //public static Sound click2;
     //public static Sound bitten;

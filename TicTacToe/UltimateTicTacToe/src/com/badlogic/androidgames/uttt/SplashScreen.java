@@ -1,9 +1,8 @@
-package com.badlogic.androidgames.mrnom;
+package com.badlogic.androidgames.uttt;
 
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Graphics;
 import com.badlogic.androidgames.framework.Screen;
-import com.badlogic.androidgames.framework.Graphics.PixmapFormat;
 
 public class SplashScreen extends Screen 
 {
