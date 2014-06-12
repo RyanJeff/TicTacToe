@@ -41,16 +41,14 @@ public class GameScreen extends Screen
     }
 
     GameState state = GameState.Ready;
-    //MasterBoard masterBoard;
-    World world;
+    MasterBoard masterBoard;
     //X x;
     //O o;
     
     public GameScreen(Game game) 
     {
         super(game);
-        world = new World();
-        //masterBoard = new MasterBoard();
+        masterBoard = new MasterBoard();
     }
 
     @Override
