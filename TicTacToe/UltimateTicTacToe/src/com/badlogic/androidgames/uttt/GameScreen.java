@@ -25,11 +25,9 @@ import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.gl.Texture;
 import com.badlogic.androidgames.framework.impl.GLGame;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
-import com.badlogic.androidgames.uttt.X;
-import com.badlogic.androidgames.uttt.O;
 import com.badlogic.androidgames.uttt.Board;
 import android.util.Log;
-import android.util.Log;
+import android.util.FloatMath;
 
 //The view of the MVC
 //target space for buttons and HUD based on source x and y
@@ -44,21 +42,12 @@ public class GameScreen extends Screen
     }
 
     GameState state = GameState.Ready;
-  //  MasterBoard masterBoard;
     Board board;
-    public X x;
-    public O o;
-    
-    MasterBoard masterBoard;
-    //X x;
-    //O o;
     
     public GameScreen(Game game) 
     {
         super(game);
         board = new Board(game);
-        //x = new X(0, 0, 32, 32);
-        //o = new O(32, 32, 32, 32);
     }
 
     @Override
@@ -79,15 +68,22 @@ public class GameScreen extends Screen
 
     private void updateReady(List<TouchEvent> touchEvents) 
     {
-    	//touch screen to start
-        if(touchEvents.size() > 0)
-        {
-        	state = GameState.Running;
-        }   
+    	if(state == GameState.Ready)
+    	{
+	    	//touch screen to start
+	        if(touchEvents.size() > 0)
+	        {
+	        	state = GameState.Running;
+	        } 
+    	}
     }
+    
+    boolean isPlayer1Turn = true;
+    int masterboard_id;
     
     private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) 
     {    
+    	state = GameState.Running;
     	int len = touchEvents.size();
         for(int i = 0; i < len; i++) 
         {
@@ -97,7 +93,7 @@ public class GameScreen extends Screen
                 if(event.x > 90 && event.x < 235)
                 {	
                 	//pause
-                		if(event.y > 440) 
+                	if(event.y > 440) 
                 	{
                 		if(Settings.soundEnabled)
                         {
@@ -108,122 +104,180 @@ public class GameScreen extends Screen
                 	}  
                 }
                 
-                
-                
-                int MB_id = -1;
-                Graphics g = game.getGraphics();
-                if(event.y >= 128 && event.y <= 224) 
+                int col = (int)Math.floor((event.x - board.GRID_START_X) / board.GRID_WIDTH);
+                int row = (int)Math.floor((event.y - board.GRID_START_Y) / board.GRID_HEIGHT);
+                int colP = (int)Math.floor((event.x - (board.GRID_START_X + col * board.GRID_WIDTH)) / board.SQUARE_SIZE);
+                int rowP = (int)Math.floor((event.y - (board.GRID_START_Y + row * board.GRID_HEIGHT)) / board.SQUARE_SIZE);
+
+                if(row == 0 && col == 0)
                 {
-            		if(event.x >= 16 && event.x <= 112) 
+                	masterboard_id = 0;   //top left
+                }
+                if(row == 0 && col == 1)
+                {
+                	masterboard_id = 1;   //top mid
+                }
+                if(row == 0 && col == 2)
+                {
+                	masterboard_id = 2;   //top right
+                }
+                if(row == 1 && col == 0)
+                {
+                	masterboard_id = 3;   //mid left
+                }
+                if(row == 1 && col == 1)
+                {
+                	masterboard_id = 4;   //mid mid
+                }
+                if(row == 1 && col == 2)
+                {
+                	masterboard_id = 5;   //mid right
+                }
+                if(row == 2 && col == 0)
+                {
+                	masterboard_id = 6;   //btm left
+                }
+                if(row == 2 && col == 1)
+                {
+                	masterboard_id = 7;   //btm mid
+                }
+                if(row == 2 && col == 2)
+                {
+                	masterboard_id = 8;   //btm right
+                }
+                
+                System.out.println("Masterboard id: " + masterboard_id);
+                //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
+                
+                if(row == 0)   
+                {
+            		if(col == 0)
                     {
-            			MB_id = 0;
-            			board.grids[0][0].grid[0] = 1;
+            			if(isPlayer1Turn)
+            			{
+            				board.grids[0][0].grid[0] = 1;
+            				isPlayer1Turn = false;
+            			}
+            			else
+            			{
+            				board.grids[0][0].grid[0] = 2;
+            				isPlayer1Turn = true;
+            			}
                     }
-            		if(event.x > 112 && event.x <= 208) 
+            		if(col == 1) 
                     {
-            			//MB_id = 1;
-            			board.grids[0][1].grid[0] = 1;
+            			if(isPlayer1Turn)
+            			{
+            				board.grids[0][1].grid[0] = 1;
+            				isPlayer1Turn = false;
+            			}
+            			else
+            			{
+            				board.grids[0][1].grid[0] = 2;
+            				isPlayer1Turn = true;
+            			}
                     }
-            		if(event.x > 208 && event.x <= 304) 
+            		if(col == 2) 
                     {
-            			//MB_id = 2;
-            			board.grids[0][2].grid[0] = 1;
-            			MB_id = 0;
-            	        g.drawPixmap(Assets.x, event.x, event.y);
-            			Log.v("ID", "Box Zero / 0");
+            			if(isPlayer1Turn)
+            			{
+            				board.grids[0][2].grid[0] = 1;
+            				isPlayer1Turn = false;
+            			}
+            			else
+            			{
+            				board.grids[0][2].grid[0] = 2;
+            				isPlayer1Turn = true;
+            			}
+                    }
+                }
+                
+            	if(row == 1) 
+                {
+            		if(col == 0) 
+                    {
+            			if(isPlayer1Turn)
+            			{
+            				board.grids[1][0].grid[0] = 1;
+            				isPlayer1Turn = false;
+            			}
+            			else
+            			{
+            				board.grids[1][0].grid[0] = 2;
+            				isPlayer1Turn = true;
+            			}
             			
                     }
-            		if(event.x > 112 && event.x <= 208) 
+            		if(col == 1) 
                     {
-            			MB_id = 1;
-            			g.drawPixmap(Assets.x, event.x, event.y);
-            			Log.v("ID", "Box One / 1");
+            			if(isPlayer1Turn)
+            			{
+            				board.grids[1][1].grid[0] = 1;
+            				isPlayer1Turn = false;
+            			}
+            			else
+            			{
+            				board.grids[1][1].grid[0] = 2;
+            				isPlayer1Turn = true;
+            			}
                     }
-            		if(event.x > 208 && event.x <= 304) 
+            		if(col == 2) 
                     {
-            			MB_id = 2;
-            			g.drawPixmap(Assets.x, event.x, event.y);
-            			Log.v("ID", "Box Two / 2");
-                    }
-                }
-            	if(event.y > 224 && event.y <= 320) 
-                {
-            		if(event.x >= 16 && event.x <= 112) 
-                    {
-            			//MB_id = 3;
-            			board.grids[1][0].grid[0] = 1;
-                    }
-            		if(event.x > 112 && event.x <= 208) 
-                    {
-            			//MB_id = 4;
-            			board.grids[1][1].grid[0] = 1;
-                    }
-            		if(event.x > 208 && event.x <= 304) 
-                    {
-            			//MB_id = 5;
-            			board.grids[1][2].grid[0] = 1;
-            			MB_id = 3;
-            			g.drawPixmap(Assets.x, event.x, event.y);
-            			Log.v("ID", "Box Three / 3");
-                    }
-            		
-            		if(event.x > 112 && event.x <= 208) 
-                    {
-            			MB_id = 4;
-            			g.drawPixmap(Assets.x, event.x, event.y);
-            			Log.v("ID", "Box Four / 4");
-                    }
-            		if(event.x > 208 && event.x <= 304) 
-                    {
-            			MB_id = 5;
-            			g.drawPixmap(Assets.x, event.x, event.y);
-            			Log.v("ID", "Box Five / 5");
+            			if(isPlayer1Turn)
+            			{
+            				board.grids[1][2].grid[0] = 1;
+            				isPlayer1Turn = false;
+            			}
+            			else
+            			{
+            				board.grids[1][2].grid[0] = 2;
+            				isPlayer1Turn = true;
+            			}
                     }
                 }
-            	if(event.y > 320 && event.y <= 416) 
-                {
-            		if(event.x >= 16 && event.x <= 112) 
-                    {
-            			//MB_id = 6;
-            			board.grids[2][0].grid[0] = 1;
-                    }
-            		if(event.x > 112 && event.x <= 208) 
-                    {
-            			//MB_id = 7;
-            			board.grids[2][1].grid[0] = 1;
-                    }
-            		if(event.x > 208 && event.x <= 304) 
-                    {
-            			//MB_id = 8;
-            			board.grids[2][2].grid[0] = 1;
-            			MB_id = 6;
-            			g.drawPixmap(Assets.x, event.x, event.y);
-            			Log.v("ID", "Box Six / 6");
-                    }
-            		if(event.x > 112 && event.x <= 208) 
-                    {
-            			MB_id = 7;
-            			g.drawPixmap(Assets.x, event.x, event.y);
-            			Log.v("ID", "Box Seven / 7");
-                    }
-            		if(event.x > 208 && event.x <= 304) 
-                    {
-            			MB_id = 8;
-            			g.drawPixmap(Assets.x, event.x, event.y);
-            			Log.v("ID", "Box Eight / 8");
-                    }
-                }
-            	/*
-            	if(MB_id == 0);
-            	{
-            		
-            	}
             	
-                */
-                
-                
-                
-                
+            	if(row == 2) 
+                {
+            		if(col == 0) 
+                    {
+            			if(isPlayer1Turn)
+            			{
+            				board.grids[2][0].grid[0] = 1;
+            				isPlayer1Turn = false;
+            			}
+            			else
+            			{
+            				board.grids[2][0].grid[0] = 2;
+            				isPlayer1Turn = true;
+            			}
+                    }
+            		if(col == 1) 
+                    {
+            			if(isPlayer1Turn)
+            			{
+            				board.grids[2][1].grid[0] = 1;
+            				isPlayer1Turn = false;
+            			}
+            			else
+            			{
+            				board.grids[2][1].grid[0] = 2;
+            				isPlayer1Turn = true;
+            			}
+                    }
+            		if(col == 2) 
+                    {
+            			if(isPlayer1Turn)
+            			{
+            				board.grids[2][2].grid[0] = 1;
+            				isPlayer1Turn = false;
+            			}
+            			else
+            			{
+            				board.grids[2][2].grid[0] = 2;
+            				isPlayer1Turn = true;
+            			}
+                    }
+                }
             }
         }
         
@@ -248,8 +302,6 @@ public class GameScreen extends Screen
         //}
     }
     
-
-
 	private void updatePaused(List<TouchEvent> touchEvents) 
     {
     	int len = touchEvents.size();
@@ -285,7 +337,6 @@ public class GameScreen extends Screen
         } 
     }
     
-    //updates game over and returns main menu
     private void updateGameOver(float deltaTime) 
     {
         /*int len = touchEvents.size();
@@ -311,11 +362,9 @@ public class GameScreen extends Screen
     @Override
     public void present(float deltaTime) 
     {
-        Graphics g = game.getGraphics();
-        //draw the game masterBoard background
+        //Graphics g = game.getGraphics();
         //g.drawPixmap(Assets.background, 0, 0);
-        
-        //drawMasterBoard(masterBoard);
+    	
         if(state == GameState.Ready) 
             drawReadyUI();
         if(state == GameState.Running)
@@ -326,13 +375,6 @@ public class GameScreen extends Screen
             drawGameOverUI();               
     }
 
-    
-    
-    private void drawMasterBoard(MasterBoard masterBoard) 
-    {
-    	//X x = masterBoard.x;
-    }
-    
     private void drawReadyUI() 
     {
         Graphics g = game.getGraphics();

@@ -20,6 +20,4 @@ public class Assets
     public static Pixmap x;
     public static Pixmap o;
     public static Sound click;
-    //public static Sound click2;
-    //public static Sound bitten;
 }

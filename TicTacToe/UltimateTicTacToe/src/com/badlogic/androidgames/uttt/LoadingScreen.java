@@ -30,9 +30,7 @@ public class LoadingScreen extends Screen
         Assets.gameOver = g.newPixmap("gameover.png", PixmapFormat.ARGB4444);
         Assets.x = g.newPixmap("x.png", PixmapFormat.ARGB4444);
         Assets.o = g.newPixmap("o.png", PixmapFormat.ARGB4444);
-        Assets.click = game.getAudio().newSound("click.ogg");
-        //Assets.click2 = game.getAudio().newSound("CreepyNoise.ogg");
-        //Assets.bitten = game.getAudio().newSound("bitten.ogg");
+        Assets.click = game.getAudio().newSound("click2.ogg");
         
         Settings.load(game.getFileIO());
         game.setScreen(new SplashScreen(game));

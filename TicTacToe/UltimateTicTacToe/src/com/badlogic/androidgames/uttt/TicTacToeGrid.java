@@ -16,4 +16,9 @@ public class TicTacToeGrid
 			return false;
 		}
 	}
+	
+	public void present()
+    {
+		
+    }
 }
