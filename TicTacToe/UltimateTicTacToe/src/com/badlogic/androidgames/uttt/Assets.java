@@ -20,4 +20,13 @@ public class Assets
     public static Pixmap x;
     public static Pixmap o;
     public static Sound click;
+    public static Pixmap GSec1;
+    public static Pixmap GSec2;
+    public static Pixmap GSec3;
+    public static Pixmap GSec4;
+    public static Pixmap GSec5;
+    public static Pixmap GSec6;
+    public static Pixmap GSec7;
+    public static Pixmap GSec8;
+    public static Pixmap GSec9;
 }
