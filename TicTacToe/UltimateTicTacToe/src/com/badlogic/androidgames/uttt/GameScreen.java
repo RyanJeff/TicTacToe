@@ -187,7 +187,7 @@ public class GameScreen extends Screen
                 }
                 
                 System.out.println("Masterboard id: " + masterboard_id);
-                //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
+                System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
                 
                 if(masterboard_id == 0)
                 {
