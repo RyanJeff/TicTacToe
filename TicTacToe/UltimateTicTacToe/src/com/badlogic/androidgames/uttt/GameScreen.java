@@ -80,6 +80,7 @@ public class GameScreen extends Screen
     
     boolean isPlayer1Turn = true;
     int masterboard_id;
+    int miniboard_id;
     
     private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) 
     {    
@@ -109,6 +110,7 @@ public class GameScreen extends Screen
                 int colP = (int)Math.floor((event.x - (board.GRID_START_X + col * board.GRID_WIDTH)) / board.SQUARE_SIZE);
                 int rowP = (int)Math.floor((event.y - (board.GRID_START_Y + row * board.GRID_HEIGHT)) / board.SQUARE_SIZE);
 
+                //masterboard ids
                 if(row == 0 && col == 0)
                 {
                 	masterboard_id = 0;   //top left
@@ -146,137 +148,175 @@ public class GameScreen extends Screen
                 	masterboard_id = 8;   //btm right
                 }
                 
+                //miniboard ids
+                if(rowP == 0 && colP == 0)
+                {
+                	miniboard_id = 0;   //top left
+                }
+                if(rowP == 0 && colP == 1)
+                {
+                	miniboard_id = 1;   //top mid
+                }
+                if(rowP == 0 && colP == 2)
+                {
+                	miniboard_id = 2;   //top right
+                }
+                if(rowP == 1 && colP == 0)
+                {
+                	miniboard_id = 3;   //mid left
+                }
+                if(rowP == 1 && colP == 1)
+                {
+                	miniboard_id = 4;   //mid mid
+                }
+                if(rowP == 1 && colP == 2)
+                {
+                	miniboard_id = 5;   //mid right
+                }
+                if(rowP == 2 && colP == 0)
+                {
+                	miniboard_id = 6;   //btm left
+                }
+                if(rowP == 2 && colP == 1)
+                {
+                	miniboard_id = 7;   //btm mid
+                }
+                if(rowP == 2 && colP == 2)
+                {
+                	miniboard_id = 8;   //btm right
+                }
+                
                 System.out.println("Masterboard id: " + masterboard_id);
                 //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
                 
-                if(row == 0)   
+                if(masterboard_id == 0)
                 {
-            		if(col == 0)
-                    {
-            			if(isPlayer1Turn)
-            			{
-            				board.grids[0][0].grid[0] = 1;
-            				isPlayer1Turn = false;
-            			}
-            			else
-            			{
-            				board.grids[0][0].grid[0] = 2;
-            				isPlayer1Turn = true;
-            			}
-                    }
-            		if(col == 1) 
-                    {
-            			if(isPlayer1Turn)
-            			{
-            				board.grids[0][1].grid[0] = 1;
-            				isPlayer1Turn = false;
-            			}
-            			else
-            			{
-            				board.grids[0][1].grid[0] = 2;
-            				isPlayer1Turn = true;
-            			}
-                    }
-            		if(col == 2) 
-                    {
-            			if(isPlayer1Turn)
-            			{
-            				board.grids[0][2].grid[0] = 1;
-            				isPlayer1Turn = false;
-            			}
-            			else
-            			{
-            				board.grids[0][2].grid[0] = 2;
-            				isPlayer1Turn = true;
-            			}
-                    }
+                	i = miniboard_id;
+                	if(isPlayer1Turn)
+        			{
+        				board.grids[0][0].grid[i] = 1;
+        				isPlayer1Turn = false;
+        			}
+        			else
+        			{
+        				board.grids[0][0].grid[i] = 2;
+        				isPlayer1Turn = true;
+        			}
+                }	
+                if(masterboard_id == 1)
+                {
+                	i = miniboard_id;
+        			if(isPlayer1Turn)
+        			{
+        				board.grids[0][1].grid[i] = 1;
+        				isPlayer1Turn = false;
+        			}
+        			else
+        			{
+        				board.grids[0][1].grid[i] = 2;
+        				isPlayer1Turn = true;
+        			}
+                }
+                if(masterboard_id == 2)
+                {
+                	i = miniboard_id;
+        			if(isPlayer1Turn)
+        			{
+        				board.grids[0][2].grid[i] = 1;
+        				isPlayer1Turn = false;
+        			}
+        			else
+        			{
+        				board.grids[0][2].grid[i] = 2;
+        				isPlayer1Turn = true;
+        			}
+                }
+                if(masterboard_id == 3)
+                {
+                	i = miniboard_id;
+        			if(isPlayer1Turn)
+        			{
+        				board.grids[1][0].grid[i] = 1;
+        				isPlayer1Turn = false;
+        			}
+        			else
+        			{
+        				board.grids[1][0].grid[i] = 2;
+        				isPlayer1Turn = true;
+        			}
                 }
                 
-            	if(row == 1) 
+                if(masterboard_id == 4)
                 {
-            		if(col == 0) 
-                    {
-            			if(isPlayer1Turn)
-            			{
-            				board.grids[1][0].grid[0] = 1;
-            				isPlayer1Turn = false;
-            			}
-            			else
-            			{
-            				board.grids[1][0].grid[0] = 2;
-            				isPlayer1Turn = true;
-            			}
-            			
-                    }
-            		if(col == 1) 
-                    {
-            			if(isPlayer1Turn)
-            			{
-            				board.grids[1][1].grid[0] = 1;
-            				isPlayer1Turn = false;
-            			}
-            			else
-            			{
-            				board.grids[1][1].grid[0] = 2;
-            				isPlayer1Turn = true;
-            			}
-                    }
-            		if(col == 2) 
-                    {
-            			if(isPlayer1Turn)
-            			{
-            				board.grids[1][2].grid[0] = 1;
-            				isPlayer1Turn = false;
-            			}
-            			else
-            			{
-            				board.grids[1][2].grid[0] = 2;
-            				isPlayer1Turn = true;
-            			}
-                    }
+                	i = miniboard_id;
+        			if(isPlayer1Turn)
+        			{
+        				board.grids[1][1].grid[i] = 1;
+        				isPlayer1Turn = false;
+        			}
+        			else
+        			{
+        				board.grids[1][1].grid[i] = 2;
+        				isPlayer1Turn = true;
+        			}
+                }
+                
+                if(masterboard_id == 5)
+                {
+                	i = miniboard_id;
+        			if(isPlayer1Turn)
+        			{
+        				board.grids[1][2].grid[i] = 1;
+        				isPlayer1Turn = false;
+        			}
+        			else
+        			{
+        				board.grids[1][2].grid[i] = 2;
+        				isPlayer1Turn = true;
+        			}
                 }
             	
-            	if(row == 2) 
+                if(masterboard_id == 6)
                 {
-            		if(col == 0) 
-                    {
-            			if(isPlayer1Turn)
-            			{
-            				board.grids[2][0].grid[0] = 1;
-            				isPlayer1Turn = false;
-            			}
-            			else
-            			{
-            				board.grids[2][0].grid[0] = 2;
-            				isPlayer1Turn = true;
-            			}
-                    }
-            		if(col == 1) 
-                    {
-            			if(isPlayer1Turn)
-            			{
-            				board.grids[2][1].grid[0] = 1;
-            				isPlayer1Turn = false;
-            			}
-            			else
-            			{
-            				board.grids[2][1].grid[0] = 2;
-            				isPlayer1Turn = true;
-            			}
-                    }
-            		if(col == 2) 
-                    {
-            			if(isPlayer1Turn)
-            			{
-            				board.grids[2][2].grid[0] = 1;
-            				isPlayer1Turn = false;
-            			}
-            			else
-            			{
-            				board.grids[2][2].grid[0] = 2;
-            				isPlayer1Turn = true;
-            			}
-                    }
+                	i = miniboard_id;
+        			if(isPlayer1Turn)
+        			{
+        				board.grids[2][0].grid[i] = 1;
+        				isPlayer1Turn = false;
+        			}
+        			else
+        			{
+        				board.grids[2][0].grid[i] = 2;
+        				isPlayer1Turn = true;
+        			}
+                }
+                if(masterboard_id == 7)
+                {
+                	i = miniboard_id;
+        			if(isPlayer1Turn)
+        			{
+        				board.grids[2][1].grid[i] = 1;
+        				isPlayer1Turn = false;
+        			}
+        			else
+        			{
+        				board.grids[2][1].grid[i] = 2;
+        				isPlayer1Turn = true;
+        			}
+                }
+                if(masterboard_id == 8)
+                {
+                	i = miniboard_id;
+        			if(isPlayer1Turn)
+        			{
+        				board.grids[2][2].grid[i] = 1;
+        				isPlayer1Turn = false;
+        			}
+        			else
+        			{
+        				board.grids[2][2].grid[i] = 2;
+        				isPlayer1Turn = true;
+        			}
                 }
             }
         }
