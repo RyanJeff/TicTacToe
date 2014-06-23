@@ -178,8 +178,13 @@ public class GameScreen extends Screen
                 	miniboard_id = 8;   //btm right
                 }
                 
+<<<<<<< HEAD
                 //System.out.println("Masterboard id: " + masterboard_id);
                 //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
+=======
+                System.out.println("Masterboard id: " + masterboard_id);
+                System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
+>>>>>>> origin/master
                 
                 if(isFirstMove)
                 {
