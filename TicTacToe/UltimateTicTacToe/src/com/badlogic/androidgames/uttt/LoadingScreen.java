@@ -27,10 +27,10 @@ public class LoadingScreen extends Screen
         Assets.credits = g.newPixmap("CreditsScreen.png", PixmapFormat.ARGB4444);
         Assets.ready = g.newPixmap("ready.png", PixmapFormat.ARGB4444);  //touch to start
         Assets.pause = g.newPixmap("PauseMenu.png", PixmapFormat.ARGB4444);
-        Assets.gameOver = g.newPixmap("gameover.png", PixmapFormat.ARGB4444);
+        //Assets.gameOver = g.newPixmap("gameover1.png", PixmapFormat.ARGB4444);
         Assets.x = g.newPixmap("x.png", PixmapFormat.ARGB4444);
         Assets.o = g.newPixmap("o.png", PixmapFormat.ARGB4444);
-        Assets.click = game.getAudio().newSound("click2.ogg");
+        Assets.click = game.getAudio().newSound("click.mp3");
         
         Settings.load(game.getFileIO());
         game.setScreen(new SplashScreen(game));

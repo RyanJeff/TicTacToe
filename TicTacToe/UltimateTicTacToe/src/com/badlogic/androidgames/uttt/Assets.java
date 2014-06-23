@@ -16,7 +16,7 @@ public class Assets
     public static Pixmap credits;
     public static Pixmap ready;
     public static Pixmap pause;
-    public static Pixmap gameOver;
+    //public static Pixmap gameOver1;
     public static Pixmap x;
     public static Pixmap o;
     public static Sound click;

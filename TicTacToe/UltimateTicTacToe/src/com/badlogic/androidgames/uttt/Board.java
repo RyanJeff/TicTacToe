@@ -2,15 +2,14 @@ package com.badlogic.androidgames.uttt;
 
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Graphics;
-import android.graphics.Rect;
 
 public class Board
 {
-    static final int GRID_START_X = 16;
-    static final int GRID_START_Y = 128;
-    static final int GRID_WIDTH = 96;
-    static final int GRID_HEIGHT = 96;
-    static final int SQUARE_SIZE = 32;
+    final int GRID_START_X = 16;
+    final int GRID_START_Y = 128;
+    final int GRID_WIDTH = 96;
+    final int GRID_HEIGHT = 96;
+    final int SQUARE_SIZE = 32;
     TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
     //public boolean gameOver = false;
     public Game game;
