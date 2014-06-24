@@ -5,23 +5,16 @@ import com.badlogic.androidgames.framework.Graphics;
 
 public class Board
 {
-<<<<<<< HEAD
     final int GRID_START_X = 16;
     final int GRID_START_Y = 128;
     final int GRID_WIDTH = 96;
     final int GRID_HEIGHT = 96;
     final int SQUARE_SIZE = 32;
-=======
-    static final int GRID_START_X = 16;
-    static final int GRID_START_Y = 128;
-    static final int GRID_WIDTH = 96;
-    static final int GRID_HEIGHT = 96;
-    static final int SQUARE_SIZE = 32;
     float xLoc = 0;
     float yLoc = 0;
->>>>>>> origin/master
     TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
     //public boolean gameOver = false;
+    
     public Game game;
     
     public Board(Game game)
@@ -57,7 +50,6 @@ public class Board
     				{
     					xLoc = GRID_START_X + col * GRID_WIDTH + (i % 3) * SQUARE_SIZE;
     					yLoc = GRID_START_Y + row * GRID_HEIGHT + (i / 3) * SQUARE_SIZE;
-
     					g.drawPixmap(Assets.x, (int)xLoc, (int)yLoc);
     				}
     				//if the grid square is o
