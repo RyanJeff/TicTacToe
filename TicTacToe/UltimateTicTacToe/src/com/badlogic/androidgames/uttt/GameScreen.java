@@ -8,6 +8,10 @@ import com.badlogic.androidgames.framework.Input.TouchEvent;
 //import com.badlogic.androidgames.framework.Pixmap;
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.uttt.Board;
+import java.lang.Object;
+import java.util.AbstractCollection;
+import java.util.AbstractList;
+import java.util.ArrayList;
 
 public class GameScreen extends Screen 
 {
@@ -38,15 +42,15 @@ public class GameScreen extends Screen
         {
             updateReady(touchEvents);
         }
-        if(state == GameState.Running)
+        else if(state == GameState.Running)
         {
         	updateRunning(touchEvents, deltaTime);
         }
-        if(state == GameState.Paused)
+        else if(state == GameState.Paused)
         {
             updatePaused(touchEvents);
         }
-        if(state == GameState.GameOver)
+        else if(state == GameState.GameOver)
         {
             updateGameOver(deltaTime);     
         }
@@ -59,12 +63,17 @@ public class GameScreen extends Screen
 	    	//touch screen to start
 	        if(touchEvents.size() > 0)
 	        {
-	        	//if(touchEvents.get(0).type == TouchEvent.TOUCH_DOWN)
-	        	//{
+	        	if(touchEvents.get(0).type == TouchEvent.TOUCH_UP)
+	        	{
 	        		state = GameState.Running;
-	        	//}
+	        	}
 	        } 
     	}
+    }
+    
+    public class ArrayList
+    {
+    	ArrayList FilledArray = new ArrayList();
     }
     
     int masterboard_id;
@@ -178,13 +187,10 @@ public class GameScreen extends Screen
                 	miniboard_id = 8;   //btm right
                 }
                 
-<<<<<<< HEAD
                 //System.out.println("Masterboard id: " + masterboard_id);
                 //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
-=======
                 System.out.println("Masterboard id: " + masterboard_id);
                 System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
->>>>>>> origin/master
                 
                 if(isFirstMove)
                 {
@@ -222,6 +228,8 @@ public class GameScreen extends Screen
 		        				else
 		        				{
 		        					boardActive = true;
+		        					// make this miniboard push to the array
+		        					System.out.println(miniboard_id);
 		        				}
 		        			}
 		                	else if(!isPlayer1Turn && boardActive && nextMove == masterboard_id)
@@ -288,6 +296,7 @@ public class GameScreen extends Screen
 		        				else
 		        				{
 		        					boardActive = true;
+		        					
 		        				}
 		        			}
 	                		else if(!isPlayer1Turn && boardActive && nextMove == masterboard_id)
