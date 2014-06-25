@@ -110,7 +110,7 @@ public class GameScreen extends Screen
                 int row = (int)Math.floor((event.y - board.GRID_START_Y) / board.GRID_HEIGHT);
                 int colP = (int)Math.floor((event.x - (board.GRID_START_X + col * board.GRID_WIDTH)) / board.SQUARE_SIZE);
                 int rowP = (int)Math.floor((event.y - (board.GRID_START_Y + row * board.GRID_HEIGHT)) / board.SQUARE_SIZE);
-
+                
            //masterboard ids
                 if(row == 0 && col == 0)
                 {
@@ -188,9 +188,16 @@ public class GameScreen extends Screen
                 }
                 
                 //System.out.println("Masterboard id: " + masterboard_id);
+<<<<<<< HEAD
                 //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
                 System.out.println("Masterboard id: " + masterboard_id);
                 System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
+=======
+                //System.out.println("Miniboard id: " + miniboard_id);
+                
+                Graphics g = game.getGraphics();
+                
+>>>>>>> origin/master
                 
                 if(isFirstMove)
                 {
@@ -615,6 +622,42 @@ public class GameScreen extends Screen
         Graphics g = game.getGraphics();
         g.drawPixmap(Assets.background, 0, 0);
         board.present();
+        if(nextMove == 0 && !isFirstMove)
+        {
+        	g.drawPixmap(Assets.GSec0, 0, 0);
+        }
+        else if(nextMove == 1 && !isFirstMove)
+        {
+        	g.drawPixmap(Assets.GSec1, 0, 0);
+        }
+        else if(nextMove == 2 && !isFirstMove)
+        {
+        	g.drawPixmap(Assets.GSec2, 0, 0);
+        }
+        else if(nextMove == 3 && !isFirstMove)
+        {
+        	g.drawPixmap(Assets.GSec3, 0, 0);
+        }
+        else if(nextMove == 4 && !isFirstMove)
+        {
+        	g.drawPixmap(Assets.GSec4, 0, 0);
+        }
+        else if(nextMove == 5 && !isFirstMove)
+        {
+        	g.drawPixmap(Assets.GSec5, 0, 0);
+        }
+        else if(nextMove == 6 && !isFirstMove)
+        {
+        	g.drawPixmap(Assets.GSec6, 0, 0);
+        }
+        else if(nextMove == 7 && !isFirstMove)
+        {
+        	g.drawPixmap(Assets.GSec7, 0, 0);
+        }
+        else if(nextMove == 8 && !isFirstMove)
+        {
+        	g.drawPixmap(Assets.GSec8, 0, 0);
+        }
     }
     
     private void drawPausedUI() 

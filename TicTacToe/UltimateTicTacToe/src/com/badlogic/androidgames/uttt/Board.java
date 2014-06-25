@@ -14,6 +14,7 @@ public class Board
     float yLoc = 0;
     TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
     //public boolean gameOver = false;
+    
     public Game game;
     
     public Board(Game game)
@@ -49,7 +50,6 @@ public class Board
     				{
     					xLoc = GRID_START_X + col * GRID_WIDTH + (i % 3) * SQUARE_SIZE;
     					yLoc = GRID_START_Y + row * GRID_HEIGHT + (i / 3) * SQUARE_SIZE;
-
     					g.drawPixmap(Assets.x, (int)xLoc, (int)yLoc);
     				}
     				//if the grid square is o
