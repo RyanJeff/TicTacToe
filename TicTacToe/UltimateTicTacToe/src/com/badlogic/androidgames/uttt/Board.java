@@ -12,8 +12,8 @@ public class Board
     final int SQUARE_SIZE = 32;
     float xLoc = 0;
     float yLoc = 0;
-    TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
-    //public boolean gameOver = false;
+    static TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
+    public static boolean gameOver = false;
     
     public Game game;
     
@@ -33,7 +33,8 @@ public class Board
     
     public void update(float deltaTime) 
     {
-    	
+    	TempFunc();
+    	CheckWin();
     }
     
     public void present()
@@ -64,7 +65,68 @@ public class Board
     		}
     	}
     }
+    // Make this a while !GameOver Loop?  ++i as player for every time the loop restarts,
+    //								  if (i == 2) i = 0; ++i;?
     
+    public static boolean CheckWin()
+    {
+    	int boardWon = 0;
+    	while(boardWon != 1)
+    	{
+		// player i increments from Player 1 -> Player 2 and back
+		int i = 1;
+			++i;
+			if(i >= 3)
+	        {
+	        	i = 0;
+	        }
+	        // check rows (horizontal)
+	        for (int row = 0; row < 3; row++) 
+			{
+	            if (grids[row][0].grid[0] == i && grids[row][1].grid[0] == i 
+	            							   && grids[row][2].grid[0] == i) 
+				{
+	            	boardWon = 1;	
+				}
+	        }
+	        // check cols (vertical)
+	        for (int col = 0; col < 3; col++) 
+			{
+	            if (grids[0][col].grid[0] == i && grids[1][col].grid[0] == i
+	                    					   && grids[2][col].grid[0] == i) 
+				{
+	            	boardWon = 1;
+	            }
+	        }
+	        // check diagonals
+	        if (grids[0][0].grid[0] == 1 && grids[1][1].grid[0] == i
+	        							 && grids[2][2].grid[0] == i) 
+			{
+	        	boardWon = 1;
+	        } 
+	        else if (grids[0][2].grid[0] == 1 && grids[1][1].grid[0] == i
+	                						  && grids[2][0].grid[0] == i) 
+			{
+	        	boardWon = 1;
+	        }
+    	}
+		return false;
+	}
+    
+    // This is temporary -- It helps me check if everything is working
+    public static void TempFunc()
+    {
+    	if(CheckWin())
+    	{
+    		System.out.println("True");
+   		}
+    	else
+    	{
+    		System.out.println("False");
+    	}
+    	
+    }
+ 
     public void destroy()
     {
     	

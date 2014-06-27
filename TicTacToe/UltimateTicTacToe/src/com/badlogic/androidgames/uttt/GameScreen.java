@@ -188,16 +188,13 @@ public class GameScreen extends Screen
                 }
                 
                 //System.out.println("Masterboard id: " + masterboard_id);
-<<<<<<< HEAD
                 //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
-                System.out.println("Masterboard id: " + masterboard_id);
-                System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
-=======
+                //System.out.println("Masterboard id: " + masterboard_id);
+                //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
                 //System.out.println("Miniboard id: " + miniboard_id);
                 
                 Graphics g = game.getGraphics();
                 
->>>>>>> origin/master
                 
                 if(isFirstMove)
                 {
@@ -236,7 +233,7 @@ public class GameScreen extends Screen
 		        				{
 		        					boardActive = true;
 		        					// make this miniboard push to the array
-		        					System.out.println(miniboard_id);
+		        					//System.out.println(miniboard_id);
 		        				}
 		        			}
 		                	else if(!isPlayer1Turn && boardActive && nextMove == masterboard_id)
