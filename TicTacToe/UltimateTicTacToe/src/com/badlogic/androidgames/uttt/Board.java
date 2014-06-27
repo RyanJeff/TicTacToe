@@ -14,8 +14,17 @@ public class Board
     float yLoc = 0;
     TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
     //public boolean gameOver = false;
-    
     public Game game;
+    Board board;
+    public boolean isPlayer1Turn = true;
+    public int nextMoveCol;
+    public int nextMoveRow;
+
+    
+    public Board()
+    {
+    	
+    }
     
     public Board(Game game)
     {
@@ -58,11 +67,97 @@ public class Board
     					xLoc = GRID_START_X + col * GRID_WIDTH + (i % 3) * SQUARE_SIZE;
     					yLoc = GRID_START_Y + row * GRID_HEIGHT + (i / 3) * SQUARE_SIZE;
     					g.drawPixmap(Assets.o, (int)xLoc, (int)yLoc);
-    					
     				}
     			}
     		}
     	}
+    }
+    
+    
+    //takes an index of a valid move and executes that move.
+    public void MakeMove(int index)
+	{
+    	int validMoveCount = 0;
+    	//go through the grid
+		for(int i = 0; i < 9; ++i)
+		{
+    		//if the grid sqare is empty (0) then
+    		if(grids[nextMoveRow][nextMoveCol].grid[i] == 0)
+    		{
+    			//if the valid move count == the index of the move.
+    			if(validMoveCount == index)
+    			{
+    				//then set the square to the correct value based on whos move it is
+    				if(isPlayer1Turn)
+    				{
+        				grids[nextMoveRow][nextMoveCol].grid[i] = 1;
+    				}
+    				else
+    				{
+    					grids[nextMoveRow][nextMoveCol].grid[i] = 2;
+    				}
+    				
+    				//set board constraint for next turn
+    				nextMoveRow = i / 3;
+    				nextMoveCol = i % 3;
+    				
+    				break;
+    			}
+    			//otherwise increase the valid move count by 1
+    			else
+    			{
+    				validMoveCount++;
+    			}
+    		}
+		}
+    	//change whos turn it is
+    	if(isPlayer1Turn)
+    	{
+    		isPlayer1Turn = false;
+    	}
+    	else
+    	{
+    		isPlayer1Turn = true;
+    	}
+	}
+
+    //int moves = board.NumMoves();
+    //for(int i = 0; i < moves; ++i)
+	//{
+	//	Board child = board.Clone();
+	//	child.MakeMove(i);
+		//add child to the tree
+	//}
+    
+    public int NumMoves()
+    {
+    	int numAvailMoves = 0;
+		for(int i = 0; i < 9; ++i)
+		{
+    		if(grids[nextMoveRow][nextMoveCol].grid[i] == 0)
+    		{
+    			numAvailMoves++;
+    		}
+		}
+		return numAvailMoves;
+    }
+    
+	//deep copy
+    protected Board Clone()
+    {
+		Board retVal = new Board();
+		retVal.isPlayer1Turn = isPlayer1Turn;
+		for(int row = 0; row < 3; ++row)
+    	{
+    		for(int col = 0; col < 3; ++col)
+    		{
+    			for(int i = 0; i < 9; ++i)
+    			{
+    				retVal.grids[row][col].grid[i] = this.grids[row][col].grid[i];
+    			}
+			}
+		}
+		return retVal;
     }
     
     public void destroy()

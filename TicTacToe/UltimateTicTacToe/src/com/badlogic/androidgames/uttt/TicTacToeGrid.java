@@ -4,18 +4,18 @@ public class TicTacToeGrid
 {
 	public short[] grid = new short[9];
 	
-	public boolean makeMove(int id, short move)
+	/*public boolean makeMove(int index, short move)
 	{
-		if(grid[id] == 0)
+		if(grid[index] == 0)
 		{
-			grid[id] = move;
+			grid[index] = move;
 			return true;
 		}
 		else 
 		{
 			return false;
 		}
-	}
+	}*/
 	
 	public void present()
     {
