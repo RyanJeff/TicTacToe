@@ -8,6 +8,10 @@ import com.badlogic.androidgames.framework.Input.TouchEvent;
 //import com.badlogic.androidgames.framework.Pixmap;
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.uttt.Board;
+import java.lang.Object;
+import java.util.AbstractCollection;
+import java.util.AbstractList;
+import java.util.ArrayList;
 
 public class GameScreen extends Screen 
 {
@@ -67,9 +71,24 @@ public class GameScreen extends Screen
     	}
     }
     
+<<<<<<< HEAD
     public int masterboard_id;
     public int miniboard_id;
     public boolean isFirstMove = true;
+=======
+    public class ArrayList
+    {
+    	ArrayList FilledArray = new ArrayList();
+    }
+    
+    int masterboard_id;
+    int miniboard_id;
+    int nextMove;
+    boolean isPlayer1Turn = true;
+    boolean boardActive = true;
+    boolean isFirstMove = true;
+    //boolean boardCompleted = false;
+>>>>>>> origin/master
     
     private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) 
     {    
@@ -139,8 +158,20 @@ public class GameScreen extends Screen
                 	miniboard_id = 8;   //btm right
                 
                 //System.out.println("Masterboard id: " + masterboard_id);
+<<<<<<< HEAD
+                //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
+                System.out.println("Masterboard id: " + masterboard_id);
+                System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
+=======
                 //System.out.println("Miniboard id: " + miniboard_id);
                 
+<<<<<<< HEAD
+=======
+                Graphics g = game.getGraphics();
+                
+>>>>>>> origin/master
+                
+>>>>>>> origin/master
                 if(isFirstMove)
                 {
                 	i = miniboard_id;
@@ -160,9 +191,24 @@ public class GameScreen extends Screen
 		                	if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[0][0].grid[i] = 1;
+<<<<<<< HEAD
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+=======
+		        				isPlayer1Turn = false;
+		        				nextMove = miniboard_id;
+		        				if(miniboard_id != masterboard_id)
+		        				{
+		        					boardActive = false;
+		        				}
+		        				else
+		        				{
+		        					boardActive = true;
+		        					// make this miniboard push to the array
+		        					System.out.println(miniboard_id);
+		        				}
+>>>>>>> origin/master
 		        			}
 		                	else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
@@ -196,9 +242,23 @@ public class GameScreen extends Screen
 	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[0][2].grid[i] = 1;
+<<<<<<< HEAD
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+=======
+		        				isPlayer1Turn = false;
+		        				nextMove = miniboard_id;
+		        				if(miniboard_id != masterboard_id)
+		        				{
+		        					boardActive = false;
+		        				}
+		        				else
+		        				{
+		        					boardActive = true;
+		        					
+		        				}
+>>>>>>> origin/master
 		        			}
 	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
