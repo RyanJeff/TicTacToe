@@ -60,7 +60,7 @@ public class GameScreen extends Screen
     {
     	if(state == GameState.Ready)
     	{
-	    	//touch screen to start
+	    	//ready/touch screen to start
 	        if(touchEvents.size() > 0)
 	        {
 	        	if(touchEvents.get(0).type == TouchEvent.TOUCH_UP)
@@ -71,6 +71,11 @@ public class GameScreen extends Screen
     	}
     }
     
+<<<<<<< HEAD
+    public int masterboard_id;
+    public int miniboard_id;
+    public boolean isFirstMove = true;
+=======
     public class ArrayList
     {
     	ArrayList FilledArray = new ArrayList();
@@ -83,6 +88,7 @@ public class GameScreen extends Screen
     boolean boardActive = true;
     boolean isFirstMove = true;
     //boolean boardCompleted = false;
+>>>>>>> origin/master
     
     private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) 
     {    
@@ -113,79 +119,43 @@ public class GameScreen extends Screen
                 
            //masterboard ids
                 if(row == 0 && col == 0)
-                {
                 	masterboard_id = 0;   //top left
-                }
                 if(row == 0 && col == 1)
-                {
                 	masterboard_id = 1;   //top mid
-                }
                 if(row == 0 && col == 2)
-                {
                 	masterboard_id = 2;   //top right
-                }
                 if(row == 1 && col == 0)
-                {
                 	masterboard_id = 3;   //mid left
-                }
                 if(row == 1 && col == 1)
-                {
                 	masterboard_id = 4;   //mid mid
-                }
                 if(row == 1 && col == 2)
-                {
                 	masterboard_id = 5;   //mid right
-                }
                 if(row == 2 && col == 0)
-                {
                 	masterboard_id = 6;   //btm left
-                }
                 if(row == 2 && col == 1)
-                {
                 	masterboard_id = 7;   //btm mid
-                }
                 if(row == 2 && col == 2)
-                {
                 	masterboard_id = 8;   //btm right
-                }
                 
            //miniboard ids
                 if(rowP == 0 && colP == 0)
-                {
                 	miniboard_id = 0;   //top left
-                }
                 if(rowP == 0 && colP == 1)
-                {
                 	miniboard_id = 1;   //top mid
-                }
                 if(rowP == 0 && colP == 2)
-                {
                 	miniboard_id = 2;   //top right
-                }
                 if(rowP == 1 && colP == 0)
-                {
                 	miniboard_id = 3;   //mid left
-                }
                 if(rowP == 1 && colP == 1)
-                {
                 	miniboard_id = 4;   //mid mid
-                }
                 if(rowP == 1 && colP == 2)
-                {
                 	miniboard_id = 5;   //mid right
-                }
                 if(rowP == 2 && colP == 0)
-                {
                 	miniboard_id = 6;   //btm left
-                }
                 if(rowP == 2 && colP == 1)
-                {
                 	miniboard_id = 7;   //btm mid
-                }
                 if(rowP == 2 && colP == 2)
-                {
                 	miniboard_id = 8;   //btm right
-                }
                 
                 //System.out.println("Masterboard id: " + masterboard_id);
                 //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
@@ -193,23 +163,19 @@ public class GameScreen extends Screen
                 //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
                 //System.out.println("Miniboard id: " + miniboard_id);
                 
+<<<<<<< HEAD
+=======
                 Graphics g = game.getGraphics();
                 
                 
+>>>>>>> origin/master
                 if(isFirstMove)
                 {
                 	i = miniboard_id;
     				board.grids[row][col].grid[i] = 1;
-    				isPlayer1Turn = false;
-    				nextMove = miniboard_id;
-    				if(miniboard_id != masterboard_id)
-    				{
-    					boardActive = false;
-    				}
-    				else
-    				{
-    					boardActive = true;
-    				}
+    				board.isPlayer1Turn = false;
+    				board.nextMoveRow = rowP;
+    				board.nextMoveCol = colP;
                 	isFirstMove = false;
                 }
                 
@@ -219,10 +185,14 @@ public class GameScreen extends Screen
 	                {
 	                	case 0:
 		                	i = miniboard_id;
-		                	boardActive = true;
-		                	if(isPlayer1Turn && boardActive && nextMove == masterboard_id)
+		                	if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[0][0].grid[i] = 1;
+<<<<<<< HEAD
+		        				board.isPlayer1Turn = false;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
+=======
 		        				isPlayer1Turn = false;
 		        				nextMove = miniboard_id;
 		        				if(miniboard_id != masterboard_id)
@@ -235,62 +205,45 @@ public class GameScreen extends Screen
 		        					// make this miniboard push to the array
 		        					//System.out.println(miniboard_id);
 		        				}
+>>>>>>> origin/master
 		        			}
-		                	else if(!isPlayer1Turn && boardActive && nextMove == masterboard_id)
+		                	else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[0][0].grid[i] = 2;
-		        				isPlayer1Turn = true;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = true;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
 		                	break;
 		                
 	                	case 1:
 	                		i = miniboard_id;
-	                		boardActive = true;
-		        			if(isPlayer1Turn && boardActive && nextMove == masterboard_id)
+		        			if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[0][1].grid[i] = 1;
-		        				isPlayer1Turn = false;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = false;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
-		        			else if(!isPlayer1Turn && boardActive && nextMove == masterboard_id)
+		        			else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[0][1].grid[i] = 2;
-		        				isPlayer1Turn = true;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = true;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
 		        			break;
 		        		
 	                	case 2:
 	                		i = miniboard_id;
-	                		boardActive = true;
-	                		if(isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[0][2].grid[i] = 1;
+<<<<<<< HEAD
+		        				board.isPlayer1Turn = false;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
+=======
 		        				isPlayer1Turn = false;
 		        				nextMove = miniboard_id;
 		        				if(miniboard_id != masterboard_id)
@@ -302,218 +255,122 @@ public class GameScreen extends Screen
 		        					boardActive = true;
 		        					
 		        				}
+>>>>>>> origin/master
 		        			}
-	                		else if(!isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[0][2].grid[i] = 2;
-		        				isPlayer1Turn = true;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = true;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
 		        			break;
 		        			
 	                	case 3:
 	                		i = miniboard_id;
-	                		boardActive = true;
-	                		if(isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[1][0].grid[i] = 1;
-		        				isPlayer1Turn = false;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = false;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
-	                		else if(!isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[1][0].grid[i] = 2;
-		        				isPlayer1Turn = true;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = true;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
 		        			break;
 		        		
 	                	case 4:
 	                		i = miniboard_id;
-	                		boardActive = true;
-	                		if(isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[1][1].grid[i] = 1;
-		        				isPlayer1Turn = false;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = false;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
-	                		else if(!isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[1][1].grid[i] = 2;
-		        				isPlayer1Turn = true;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = true;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
 		        			break;
 		        			
 	                	case 5:
 	                		i = miniboard_id;
-	                		boardActive = true;
-	                		if(isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[1][2].grid[i] = 1;
-		        				isPlayer1Turn = false;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = false;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
-	                		else if(!isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[1][2].grid[i] = 2;
-		        				isPlayer1Turn = true;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = true;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
 		        			break;
 		        			
 	                	case 6:
 	                		i = miniboard_id;
-	                		boardActive = true;
-	                		if(isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[2][0].grid[i] = 1;
-		        				isPlayer1Turn = false;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = false;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
-	                		else if(!isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[2][0].grid[i] = 2;
-		        				isPlayer1Turn = true;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = true;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
 		        			break;
 		        			
 	                	case 7:
 	                		i = miniboard_id;
-	                		boardActive = true;
-	                		if(isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[2][1].grid[i] = 1;
-		        				isPlayer1Turn = false;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = false;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
-	                		else if(!isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[2][1].grid[i] = 2;
-		        				isPlayer1Turn = true;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = true;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
 		        			break;
 		        			
 	                	case 8:
 	                		i = miniboard_id;
-	                		boardActive = true;
-	                		if(isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[2][2].grid[i] = 1;
-		        				isPlayer1Turn = false;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = false;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
-	                		else if(!isPlayer1Turn && boardActive && nextMove == masterboard_id)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
 		        				board.grids[2][2].grid[i] = 2;
-		        				isPlayer1Turn = true;
-		        				nextMove = miniboard_id;
-		        				if(miniboard_id != masterboard_id)
-		        				{
-		        					boardActive = false;
-		        				}
-		        				else
-		        				{
-		        					boardActive = true;
-		        				}
+		        				board.isPlayer1Turn = true;
+		        				board.nextMoveRow = rowP;
+		        				board.nextMoveCol = colP;
 		        			}
 		        			break;
 	                }
@@ -521,12 +378,6 @@ public class GameScreen extends Screen
             }
         }
         
-        //if(masterBoard.gameOver) 
-        //{
-            //if(Settings.soundEnabled)
-                //Assets.bitten.play(1);
-            //state = GameState.GameOver;
-        //}
     }
     
 	private void updatePaused(List<TouchEvent> touchEvents) 
@@ -593,15 +444,15 @@ public class GameScreen extends Screen
         {
             drawReadyUI();
         }
-        if(state == GameState.Running)
+        else if(state == GameState.Running)
         {
         	drawRunningUI();
         }
-        if(state == GameState.Paused)
+        else if(state == GameState.Paused)
         {
             drawPausedUI();
         }
-        if(state == GameState.GameOver)
+        else if(state == GameState.GameOver)
         {
             drawGameOverUI(); 
         }
@@ -619,39 +470,39 @@ public class GameScreen extends Screen
         Graphics g = game.getGraphics();
         g.drawPixmap(Assets.background, 0, 0);
         board.present();
-        if(nextMove == 0 && !isFirstMove)
+        if(board.nextMoveRow == 0 &&  board.nextMoveCol == 0 && !isFirstMove)
         {
         	g.drawPixmap(Assets.GSec0, 0, 0);
         }
-        else if(nextMove == 1 && !isFirstMove)
+        else if(board.nextMoveRow == 0 &&  board.nextMoveCol == 1 && !isFirstMove)
         {
         	g.drawPixmap(Assets.GSec1, 0, 0);
         }
-        else if(nextMove == 2 && !isFirstMove)
+        else if(board.nextMoveRow == 0 &&  board.nextMoveCol == 2 && !isFirstMove)
         {
         	g.drawPixmap(Assets.GSec2, 0, 0);
         }
-        else if(nextMove == 3 && !isFirstMove)
+        else if(board.nextMoveRow == 1 &&  board.nextMoveCol == 0 && !isFirstMove)
         {
         	g.drawPixmap(Assets.GSec3, 0, 0);
         }
-        else if(nextMove == 4 && !isFirstMove)
+        else if(board.nextMoveRow == 1 &&  board.nextMoveCol == 1 && !isFirstMove)
         {
         	g.drawPixmap(Assets.GSec4, 0, 0);
         }
-        else if(nextMove == 5 && !isFirstMove)
+        else if(board.nextMoveRow == 1 &&  board.nextMoveCol == 2 && !isFirstMove)
         {
         	g.drawPixmap(Assets.GSec5, 0, 0);
         }
-        else if(nextMove == 6 && !isFirstMove)
+        else if(board.nextMoveRow == 2 &&  board.nextMoveCol == 0 && !isFirstMove)
         {
         	g.drawPixmap(Assets.GSec6, 0, 0);
         }
-        else if(nextMove == 7 && !isFirstMove)
+        else if(board.nextMoveRow == 2 &&  board.nextMoveCol == 1 && !isFirstMove)
         {
         	g.drawPixmap(Assets.GSec7, 0, 0);
         }
-        else if(nextMove == 8 && !isFirstMove)
+        else if(board.nextMoveRow == 2 &&  board.nextMoveCol == 2 && !isFirstMove)
         {
         	g.drawPixmap(Assets.GSec8, 0, 0);
         }
@@ -675,11 +526,8 @@ public class GameScreen extends Screen
         if(state == GameState.Running)
         {
             state = GameState.Paused;
+            Settings.save(game.getFileIO());
         }
-        //if(masterBoard.gameOver) 
-        //{
-            //Settings.save(game.getFileIO());
-        //} 
     }
 
     @Override

@@ -6,7 +6,7 @@ import com.badlogic.androidgames.framework.Screen;
 
 public class SplashScreen extends Screen 
 {
-	private float timer = 4.0f;
+	private float timer = 3.0f;
 	
     public SplashScreen(Game game) 
     {
