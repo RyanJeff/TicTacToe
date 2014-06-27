@@ -12,14 +12,10 @@ public class Board
     final int SQUARE_SIZE = 32;
     float xLoc = 0;
     float yLoc = 0;
-<<<<<<< HEAD
     static TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
     public static boolean gameOver = false;
-    
-=======
-    TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
+    //TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
     //public boolean gameOver = false;
->>>>>>> origin/master
     public Game game;
     Board board;
     public boolean isPlayer1Turn = true;
@@ -127,7 +123,6 @@ public class Board
 		return false;
 	}
     
-<<<<<<< HEAD
     // This is temporary -- It helps me check if everything is working
     public static void TempFunc()
     {
@@ -141,8 +136,6 @@ public class Board
     	}
     	
     }
- 
-=======
     
     //takes an index of a valid move and executes that move.
     public void MakeMove(int index)
@@ -151,7 +144,7 @@ public class Board
     	//go through the grid
 		for(int i = 0; i < 9; ++i)
 		{
-    		//if the grid sqare is empty (0) then
+    		//if the grid square is empty (0) then
     		if(grids[nextMoveRow][nextMoveCol].grid[i] == 0)
     		{
     			//if the valid move count == the index of the move.
@@ -230,7 +223,6 @@ public class Board
 		return retVal;
     }
     
->>>>>>> origin/master
     public void destroy()
     {
     	
