@@ -76,8 +76,7 @@ public class Board
     		}
     	}
     }
-    // Make this a while !GameOver Loop?  ++i as player for every time the loop restarts,
-    //								  if (i == 2) i = 0; ++i;?
+    
     public static boolean CheckWin()
     {
     	int i = 0;
@@ -191,6 +190,17 @@ public class Board
 		}
 		return numAvailMoves;
     }
+    public int RandomMove()
+    {
+    	int Start = 1;
+    	int End = NumMoves();
+    	Random random = new Random();
+    	for (int idx = 1; idx <= 1; ++idx)
+    		{
+    		int randomInt = randomGenerator.nextInt(9);
+    	    }
+    	return 0;
+    }
     
     private void AIPlayer()
     {
@@ -198,6 +208,7 @@ public class Board
     	// Make this take-over for player 2
     	while(isPlayer1Turn == false)
     	{
+    		int i = NumMoves();
     		
     	}
     	
