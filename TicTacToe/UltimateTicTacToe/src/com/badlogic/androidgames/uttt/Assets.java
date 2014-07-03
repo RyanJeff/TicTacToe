@@ -16,9 +16,9 @@ public class Assets
     public static Pixmap credits;
     public static Pixmap ready;
     public static Pixmap pause;
-    //public static Pixmap gameOver1;
-    //public static Pixmap gameOver2;
-    //public static Pixmap gameOverC;
+    public static Pixmap gameOver1;
+    public static Pixmap gameOver2;
+    public static Pixmap gameOverC;
     public static Pixmap x;
     public static Pixmap o;
     public static Pixmap GSec0;
@@ -30,6 +30,8 @@ public class Assets
     public static Pixmap GSec6;
     public static Pixmap GSec7;
     public static Pixmap GSec8;
+    public static Pixmap bigX;
+    public static Pixmap bigO;
     public static Sound click;
     public static Sound clinkSound;
     //public static Sound BGM;

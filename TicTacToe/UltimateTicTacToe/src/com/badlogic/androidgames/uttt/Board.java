@@ -14,14 +14,19 @@ public class Board
     float xLoc = 0;
     float yLoc = 0;
     static TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
+<<<<<<< HEAD
+=======
     public static boolean gameOver = false;
     //TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
+>>>>>>> origin/master
     public Game game;
     Board board;
     public boolean isPlayer1Turn = true;
-    public int nextMoveCol;
     public int nextMoveRow;
-
+    public int nextMoveCol;
+    public boolean gameOver1 = false;
+    public boolean gameOver2 = false;
+    public boolean gameOverC = false;
     
     public Board()
     {
@@ -44,7 +49,11 @@ public class Board
     
     public void update(float deltaTime) 
     {
+<<<<<<< HEAD
+
+=======
     	
+>>>>>>> origin/master
     }
     
     public void present()
@@ -76,7 +85,27 @@ public class Board
     		}
     	}
     }
+<<<<<<< HEAD
     
+=======
+<<<<<<< HEAD
+    
+
+    public boolean miniBoardWonX = false;
+    public boolean miniBoardWonO = false;
+
+    public boolean CheckGrid(int playerNumber, TicTacToeGrid theGrid)
+    {
+    	//horizontal checks for miniboards
+		if(theGrid.grid[0] == playerNumber && theGrid.grid[1] == playerNumber && theGrid.grid[2] == playerNumber ||
+			theGrid.grid[3] == playerNumber && theGrid.grid[4] == playerNumber && theGrid.grid[5] == playerNumber ||
+			theGrid.grid[6] == playerNumber && theGrid.grid[7] == playerNumber && theGrid.grid[8] == playerNumber)
+		{
+			if(playerNumber == 1)
+=======
+    // Make this a while !GameOver Loop?  ++i as player for every time the loop restarts,
+    //								  if (i == 2) i = 0; ++i;?
+>>>>>>> origin/master
     public static boolean CheckWin()
     {
     	int i = 0;
@@ -92,37 +121,102 @@ public class Board
 	        }
 	        // check rows (horizontal)
 	        for (int row = 0; row < 3; row++) 
+>>>>>>> origin/master
 			{
-	            if (grids[row][0].grid[0] == i && grids[row][1].grid[0] == i 
-	            							   && grids[row][2].grid[0] == i) 
-				{
-	            	boardWon = 1;	
-				}
-	        }
-	        // check cols (vertical)
-	        for (int col = 0; col < 3; col++) 
+				miniBoardWonX = true;
+			}
+			else 
 			{
-	            if (grids[0][col].grid[0] == i && grids[1][col].grid[0] == i
-	                    					   && grids[2][col].grid[0] == i) 
-				{
-	            	boardWon = 1;
-	            }
-	        }
-	        // check diagonals
-	        if (grids[0][0].grid[0] == 1 && grids[1][1].grid[0] == i
-	        							 && grids[2][2].grid[0] == i) 
+				miniBoardWonO = true;
+			}
+			return true;
+		}		
+		//vertical checks for miniboards
+		if(theGrid.grid[0] == playerNumber && theGrid.grid[3] == playerNumber && theGrid.grid[6] == playerNumber ||
+			theGrid.grid[1] == playerNumber && theGrid.grid[4] == playerNumber && theGrid.grid[7] == playerNumber ||
+			theGrid.grid[2] == playerNumber && theGrid.grid[5] == playerNumber && theGrid.grid[8] == playerNumber)
+		{
+			if(playerNumber == 1)
 			{
-	        	boardWon = 1;
-	        } 
-	        else if (grids[0][2].grid[0] == 1 && grids[1][1].grid[0] == i
-	                						  && grids[2][0].grid[0] == i) 
+				miniBoardWonX = true;
+			}
+			else 
 			{
-	        	boardWon = 1;
-	        }
-    	}
-		return false;
-	}
+				miniBoardWonO = true;
+			}
+			return true;
+		}
+		//diagonal checks for miniboards
+		if(theGrid.grid[0] == playerNumber && theGrid.grid[4] == playerNumber && theGrid.grid[8] == playerNumber ||
+			theGrid.grid[2] == playerNumber && theGrid.grid[4] == playerNumber && theGrid.grid[6] == playerNumber)
+		{
+			if(playerNumber == 1)
+			{
+				miniBoardWonX = true;
+			}
+			else 
+			{
+				miniBoardWonO = true;
+			}
+			return true;
+		}
+		
+    	return false;
+    }
     
+<<<<<<< HEAD
+    public void checkGameOver()
+    {
+		//horizontal checks for masterboard
+		if(CheckGrid(1, grids[0][0]) && CheckGrid(1, grids[0][1]) && CheckGrid(1, grids[0][2]) ||
+			CheckGrid(1, grids[1][0]) && CheckGrid(1, grids[1][1]) && CheckGrid(1, grids[1][2]) ||
+			CheckGrid(1, grids[2][0]) && CheckGrid(1, grids[2][1]) && CheckGrid(1, grids[2][2]))
+		{
+			gameOver1 = true;
+		}
+		else if(CheckGrid(2, grids[0][0]) && CheckGrid(2, grids[0][1]) && CheckGrid(2, grids[0][2]) ||
+				CheckGrid(2, grids[1][0]) && CheckGrid(2, grids[1][1]) && CheckGrid(2, grids[1][2]) ||
+				CheckGrid(2, grids[2][0]) && CheckGrid(2, grids[2][1]) && CheckGrid(2, grids[2][2]))
+		{
+			gameOver2 = true;
+		}
+		
+		//vertical checks for masterboard
+		if(CheckGrid(1, grids[0][0]) && CheckGrid(1, grids[1][0]) && CheckGrid(1, grids[2][0]) ||
+			CheckGrid(1, grids[0][1]) && CheckGrid(1, grids[1][1]) && CheckGrid(1, grids[2][1]) ||
+			CheckGrid(1, grids[0][2]) && CheckGrid(1, grids[1][2]) && CheckGrid(1, grids[2][2]))
+		{
+			gameOver1 = true;
+		}
+		else if(CheckGrid(2, grids[0][0]) && CheckGrid(2, grids[1][0]) && CheckGrid(2, grids[2][0]) ||
+				CheckGrid(2, grids[0][1]) && CheckGrid(2, grids[1][1]) && CheckGrid(2, grids[2][1]) ||
+				CheckGrid(2, grids[0][2]) && CheckGrid(2, grids[1][2]) && CheckGrid(2, grids[2][2]))
+		{
+			gameOver2 = true;
+		}
+		
+		//diagonal checks for masterboard
+		if(CheckGrid(1, grids[0][0]) && CheckGrid(1, grids[1][1]) && CheckGrid(1, grids[2][2]) ||
+			CheckGrid(1, grids[2][0]) && CheckGrid(1, grids[1][1]) && CheckGrid(1, grids[0][2]))
+		{
+			gameOver1 = true;
+		}
+		else if(CheckGrid(2, grids[0][0]) && CheckGrid(2, grids[1][1]) && CheckGrid(2, grids[2][2]) ||
+				CheckGrid(2, grids[2][0]) && CheckGrid(2, grids[1][1]) && CheckGrid(2, grids[0][2]))
+		{
+			gameOver2 = true;
+		}
+		
+		//NumMoves();
+		if(NumMoves() == 0)
+		{
+			gameOverC = true;
+		}
+    }
+    
+/*    
+=======
+>>>>>>> origin/master
     //takes an index of a valid move and executes that move.
     public void MakeMove(int index)
 	{
@@ -145,11 +239,9 @@ public class Board
     				{
     					grids[nextMoveRow][nextMoveCol].grid[i] = 2;
     				}
-    				
     				//set board constraint for next turn
     				nextMoveRow = i / 3;
     				nextMoveCol = i % 3;
-    				
     				break;
     			}
     			//otherwise increase the valid move count by 1
@@ -177,10 +269,12 @@ public class Board
 	//	child.MakeMove(i);
 		//add child to the tree
 	//}
+    */
+    
+    public int numAvailMoves = 0;
     
     public int NumMoves()
     {
-    	int numAvailMoves = 0;
 		for(int i = 0; i < 9; ++i)
 		{
     		if(grids[nextMoveRow][nextMoveCol].grid[i] == 0)
@@ -190,6 +284,7 @@ public class Board
 		}
 		return numAvailMoves;
     }
+<<<<<<< HEAD
     public int RandomMove()
     {
     	int Start = 1;
@@ -201,6 +296,11 @@ public class Board
     	    }
     	return 0;
     }
+=======
+<<<<<<< HEAD
+    /*
+=======
+>>>>>>> origin/master
     
     private void AIPlayer()
     {
@@ -220,26 +320,25 @@ public class Board
     	//		Rule 5: Place in the position such as I may win in the most number of possible ways.
     }
     
+>>>>>>> origin/master
 	//deep copy
     protected Board Clone()
     {
 		Board retVal = new Board();
 		retVal.isPlayer1Turn = isPlayer1Turn;
-		for(int row = 0; row < 3; ++row)
-    	{
-    		for(int col = 0; col < 3; ++col)
+		for(int i = 0; i < 9; ++i)
+		{
+    		if(grids[nextMoveRow][nextMoveCol].grid[i] == 0)
     		{
-    			for(int i = 0; i < 9; ++i)
-    			{
-    				retVal.grids[row][col].grid[i] = this.grids[row][col].grid[i];
-    			}
+    				retVal.grids[nextMoveRow][nextMoveCol].grid[i] = this.grids[nextMoveRow][nextMoveCol].grid[i];
 			}
 		}
 		return retVal;
     }
-    
+    */
     public void destroy()
     {
     	
     }
+    
 }
