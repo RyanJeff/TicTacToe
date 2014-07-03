@@ -15,7 +15,6 @@ public class Board
     static TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
     public static boolean gameOver = false;
     //TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
-    //public boolean gameOver = false;
     public Game game;
     Board board;
     public boolean isPlayer1Turn = true;
@@ -63,6 +62,7 @@ public class Board
     					xLoc = GRID_START_X + col * GRID_WIDTH + (i % 3) * SQUARE_SIZE;
     					yLoc = GRID_START_Y + row * GRID_HEIGHT + (i / 3) * SQUARE_SIZE;
     					g.drawPixmap(Assets.x, (int)xLoc, (int)yLoc);
+    					//Assets.Piece.play(1);
     				}
     				//if the grid square is o
     				else if(grids[row][col].grid[i] == 2)
@@ -70,6 +70,7 @@ public class Board
     					xLoc = GRID_START_X + col * GRID_WIDTH + (i % 3) * SQUARE_SIZE;
     					yLoc = GRID_START_Y + row * GRID_HEIGHT + (i / 3) * SQUARE_SIZE;
     					g.drawPixmap(Assets.o, (int)xLoc, (int)yLoc);
+    					//Assets.Piece.play(1);
     				}
     			}
     		}
@@ -77,14 +78,14 @@ public class Board
     }
     // Make this a while !GameOver Loop?  ++i as player for every time the loop restarts,
     //								  if (i == 2) i = 0; ++i;?
-    
     public static boolean CheckWin()
     {
+    	int i = 0;
     	int boardWon = 0;
     	while(boardWon != 1)
     	{
 		// player i increments from Player 1 -> Player 2 and back
-		int i = 1;
+		
 			++i;
 			if(i >= 3)
 	        {

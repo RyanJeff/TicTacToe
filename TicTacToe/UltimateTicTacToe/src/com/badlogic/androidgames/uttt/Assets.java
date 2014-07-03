@@ -31,4 +31,6 @@ public class Assets
     public static Pixmap GSec7;
     public static Pixmap GSec8;
     public static Sound click;
+    public static Sound clinkSound;
+    //public static Sound BGM;
 }

@@ -20,7 +20,8 @@ public class GameScreen extends Screen
         Ready,
         Running,
         Paused,
-        GameOver
+        GameOver,
+        SinglePlayer
     }
 
     GameState state = GameState.Ready;
@@ -73,10 +74,6 @@ public class GameScreen extends Screen
     
     public int masterboard_id;
     public int miniboard_id;
-    public class ArrayList
-    {
-    	ArrayList FilledArray = new ArrayList();
-    }
     boolean isPlayer1Turn = true;
     boolean isFirstMove = true;    
     private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) 
@@ -465,6 +462,18 @@ public class GameScreen extends Screen
         {
         	g.drawPixmap(Assets.GSec8, 0, 0);
         }
+    }
+
+    private void SinglePlayer()
+    {
+    	// Need to import java.util.Random
+    	// Make this take-over for player 2
+    	// create a bunch of rules
+    	//		Rule 1: If I have a winning move, take it.
+    	//		Rule 2: If the opponent has a winning move, block it.
+    	//		Rule 3: If I can create a fork (two winning ways) after this move, do it.
+    	//		Rule 4: Do not let the opponent creating a fork after my move. (Opponent may block your winning move and create a fork.)
+    	//		Rule 5: Place in the position such as I may win in the most number of possible ways.
     }
     
     private void drawPausedUI() 
