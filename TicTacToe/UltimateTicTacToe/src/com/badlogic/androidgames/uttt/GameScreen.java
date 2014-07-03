@@ -9,6 +9,12 @@ import com.badlogic.androidgames.framework.Input.TouchEvent;
 //import com.badlogic.androidgames.framework.Pixmap;
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.uttt.Board;
+<<<<<<< HEAD
+=======
+//import java.lang.Object;
+//import java.util.AbstractCollection;
+//import java.util.AbstractList;
+>>>>>>> origin/master
 //import java.util.ArrayList;
 
 public class GameScreen extends Screen 
@@ -18,7 +24,8 @@ public class GameScreen extends Screen
         Ready,
         Running,
         Paused,
-        GameOver
+        GameOver,
+        SinglePlayer
     }
 
     GameState state = GameState.Ready;
@@ -72,6 +79,7 @@ public class GameScreen extends Screen
     
     public int masterboard_id;
     public int miniboard_id;
+<<<<<<< HEAD
     boolean isFirstMove = true;  
     
     /*public class ArrayList
@@ -79,6 +87,10 @@ public class GameScreen extends Screen
     	ArrayList FilledArray = new ArrayList();
     }*/
       
+=======
+    boolean isPlayer1Turn = true;
+    boolean isFirstMove = true;    
+>>>>>>> origin/master
     private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) 
     {    
     	int len = touchEvents.size();
@@ -483,7 +495,7 @@ public class GameScreen extends Screen
     		g.drawPixmap(Assets.bigO, 0, 0);
         }
     }
-    
+
     private void drawPausedUI() 
     {
         Graphics g = game.getGraphics();      
