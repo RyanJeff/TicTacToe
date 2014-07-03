@@ -1,6 +1,7 @@
 package com.badlogic.androidgames.uttt;
 
 import java.util.List;
+
 //import android.util.Log;
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Graphics;
@@ -8,10 +9,7 @@ import com.badlogic.androidgames.framework.Input.TouchEvent;
 //import com.badlogic.androidgames.framework.Pixmap;
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.uttt.Board;
-import java.lang.Object;
-import java.util.AbstractCollection;
-import java.util.AbstractList;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class GameScreen extends Screen 
 {
@@ -54,6 +52,7 @@ public class GameScreen extends Screen
         {
             updateGameOver(deltaTime);     
         }
+        
     }
     
     private void updateReady(List<TouchEvent> touchEvents) 
@@ -73,12 +72,13 @@ public class GameScreen extends Screen
     
     public int masterboard_id;
     public int miniboard_id;
-    public class ArrayList
+    boolean isFirstMove = true;  
+    
+    /*public class ArrayList
     {
     	ArrayList FilledArray = new ArrayList();
-    }
-    boolean isPlayer1Turn = true;
-    boolean isFirstMove = true;    
+    }*/
+      
     private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) 
     {    
     	int len = touchEvents.size();
@@ -147,13 +147,7 @@ public class GameScreen extends Screen
                 	miniboard_id = 8;   //btm right
                 
                 //System.out.println("Masterboard id: " + masterboard_id);
-                //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
-                //System.out.println("Masterboard id: " + masterboard_id);
-                //System.out.println("Miniboards: rowP = " + rowP + ", colP = " + colP);
                 //System.out.println("Miniboard id: " + miniboard_id);
-                
-                Graphics g = game.getGraphics();
-                
                 
                 if(isFirstMove)
                 {
@@ -177,7 +171,8 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				isPlayer1Turn = false;
+		        				board.CheckGrid(1, board.grids[0][0]);
+		        				
 		        			}
 		                	else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
@@ -185,6 +180,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(2, board.grids[0][0]);
 		        			}
 		                	break;
 		                
@@ -196,6 +192,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(1, board.grids[0][1]);
 		        			}
 		        			else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
@@ -203,6 +200,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(2, board.grids[0][1]);
 		        			}
 		        			break;
 		        		
@@ -213,8 +211,8 @@ public class GameScreen extends Screen
 		        				board.grids[0][2].grid[i] = 1;
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
-		        				board.nextMoveCol = colP;
-		        				isPlayer1Turn = false;		        			
+		        				board.nextMoveCol = colP;	
+		        				board.CheckGrid(1, board.grids[0][2]);
 		        			}
 	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
@@ -222,6 +220,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(2, board.grids[0][2]);
 		        			}
 		        			break;
 		        			
@@ -233,6 +232,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(1, board.grids[1][0]);
 		        			}
 	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
@@ -240,6 +240,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(2, board.grids[1][0]);
 		        			}
 		        			break;
 		        		
@@ -251,6 +252,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(1, board.grids[1][1]);
 		        			}
 	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
@@ -258,6 +260,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(2, board.grids[1][1]);
 		        			}
 		        			break;
 		        			
@@ -269,6 +272,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(1, board.grids[1][2]);
 		        			}
 	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
@@ -276,6 +280,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(2, board.grids[1][2]);
 		        			}
 		        			break;
 		        			
@@ -287,6 +292,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(1, board.grids[2][0]);
 		        			}
 	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
@@ -294,6 +300,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(2, board.grids[2][0]);
 		        			}
 		        			break;
 		        			
@@ -305,6 +312,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(1, board.grids[2][1]);
 		        			}
 	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
@@ -312,6 +320,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(2, board.grids[2][1]);
 		        			}
 		        			break;
 		        			
@@ -323,6 +332,7 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(1, board.grids[2][2]);
 		        			}
 	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
 		        			{
@@ -330,13 +340,18 @@ public class GameScreen extends Screen
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
+		        				board.CheckGrid(2, board.grids[2][2]);
 		        			}
 		        			break;
-	                }
+	                } 
 	            }
             }
         }
-        
+        board.checkGameOver();
+        if(board.gameOver1 || board.gameOver2 || board.gameOverC)
+        {
+        	state = GameState.GameOver;
+        }
     }
     
 	private void updatePaused(List<TouchEvent> touchEvents) 
@@ -376,24 +391,15 @@ public class GameScreen extends Screen
     
     private void updateGameOver(float deltaTime) 
     {
-        /*int len = touchEvents.size();
-        for(int i = 0; i < len; i++) 
-        {
-            TouchEvent event = touchEvents.get(i);
-            if(event.type == TouchEvent.TOUCH_UP) 
-            {
-                if(event.x >= 128 && event.x <= 192 &&
-                   event.y >= 200 && event.y <= 264) 
-                {
-                	if(Settings.soundEnabled)
-                    {
-                        Assets.click.play(1);
-                    }
-                    game.setScreen(new MainMenuScreen(game));
-                    return;
-                }
-            }
-        }*/
+    	float timer = 4.0f;
+    	if(board.gameOver1 || board.gameOver2 || board.gameOverC)
+    	{
+	    	timer -= deltaTime;
+	    	if(timer <= 0)
+	    	{
+	    		game.setScreen(new MainMenuScreen(game));
+	    	}
+    	}
     }
 
     @Override
@@ -465,6 +471,17 @@ public class GameScreen extends Screen
         {
         	g.drawPixmap(Assets.GSec8, 0, 0);
         }
+
+        
+        
+        if(board.miniBoardWonX)
+        {
+        	g.drawPixmap(Assets.bigX, 0, 0);
+        }
+    	else if(board.miniBoardWonO)
+    	{
+    		g.drawPixmap(Assets.bigO, 0, 0);
+        }
     }
     
     private void drawPausedUI() 
@@ -475,8 +492,19 @@ public class GameScreen extends Screen
 
     private void drawGameOverUI() 
     {
-        //Graphics g = game.getGraphics();
-        //g.drawPixmap(Assets.gameOver, 0, 0);
+       Graphics g = game.getGraphics();
+    	if(board.gameOver1)
+    	{
+    		g.drawPixmap(Assets.gameOver1, 0, 0);
+    	}
+    	else if(board.gameOver2)
+    	{
+    		g.drawPixmap(Assets.gameOver2, 0, 0);
+    	}
+    	else if(board.gameOverC)
+    	{
+    		g.drawPixmap(Assets.gameOverC, 0, 0);
+    	}
     }
     
     @Override
