@@ -42,6 +42,7 @@ public class LoadingScreen extends Screen
         Assets.GSec7 = g.newPixmap("GSec7.png", PixmapFormat.ARGB4444);
         Assets.GSec8 = g.newPixmap("GSec8.png", PixmapFormat.ARGB4444);
         Assets.click = game.getAudio().newSound("click.mp3");
+        Assets.clinkSound = game.getAudio().newSound("clinkSound.mp3");
         
         Settings.load(game.getFileIO());
         game.setScreen(new SplashScreen(game));
