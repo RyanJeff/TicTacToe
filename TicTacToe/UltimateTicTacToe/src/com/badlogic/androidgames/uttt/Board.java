@@ -14,11 +14,8 @@ public class Board
     float xLoc = 0;
     float yLoc = 0;
     static TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
-<<<<<<< HEAD
-=======
     public static boolean gameOver = false;
     //TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
->>>>>>> origin/master
     public Game game;
     Board board;
     public boolean isPlayer1Turn = true;
@@ -49,11 +46,7 @@ public class Board
     
     public void update(float deltaTime) 
     {
-<<<<<<< HEAD
-
-=======
     	
->>>>>>> origin/master
     }
     
     public void present()
@@ -85,10 +78,7 @@ public class Board
     		}
     	}
     }
-<<<<<<< HEAD
-    
-=======
-<<<<<<< HEAD
+
     
 
     public boolean miniBoardWonX = false;
@@ -100,28 +90,8 @@ public class Board
 		if(theGrid.grid[0] == playerNumber && theGrid.grid[1] == playerNumber && theGrid.grid[2] == playerNumber ||
 			theGrid.grid[3] == playerNumber && theGrid.grid[4] == playerNumber && theGrid.grid[5] == playerNumber ||
 			theGrid.grid[6] == playerNumber && theGrid.grid[7] == playerNumber && theGrid.grid[8] == playerNumber)
-		{
-			if(playerNumber == 1)
-=======
-    // Make this a while !GameOver Loop?  ++i as player for every time the loop restarts,
-    //								  if (i == 2) i = 0; ++i;?
->>>>>>> origin/master
-    public static boolean CheckWin()
-    {
-    	int i = 0;
-    	int boardWon = 0;
-    	while(boardWon != 1)
-    	{
-		// player i increments from Player 1 -> Player 2 and back
-		
-			++i;
-			if(i >= 3)
-	        {
-	        	i = 0;
-	        }
-	        // check rows (horizontal)
-	        for (int row = 0; row < 3; row++) 
->>>>>>> origin/master
+		{	
+		if(playerNumber == 1)
 			{
 				miniBoardWonX = true;
 			}
@@ -130,7 +100,8 @@ public class Board
 				miniBoardWonO = true;
 			}
 			return true;
-		}		
+		}
+   	
 		//vertical checks for miniboards
 		if(theGrid.grid[0] == playerNumber && theGrid.grid[3] == playerNumber && theGrid.grid[6] == playerNumber ||
 			theGrid.grid[1] == playerNumber && theGrid.grid[4] == playerNumber && theGrid.grid[7] == playerNumber ||
@@ -164,7 +135,6 @@ public class Board
     	return false;
     }
     
-<<<<<<< HEAD
     public void checkGameOver()
     {
 		//horizontal checks for masterboard
@@ -215,8 +185,6 @@ public class Board
     }
     
 /*    
-=======
->>>>>>> origin/master
     //takes an index of a valid move and executes that move.
     public void MakeMove(int index)
 	{
@@ -284,7 +252,6 @@ public class Board
 		}
 		return numAvailMoves;
     }
-<<<<<<< HEAD
     public int RandomMove()
     {
     	int Start = 1;
@@ -292,15 +259,11 @@ public class Board
     	Random random = new Random();
     	for (int idx = 1; idx <= 1; ++idx)
     		{
-    		int randomInt = randomGenerator.nextInt(9);
+    		//int randomInt = randomGenerator.nextInt(9);
     	    }
     	return 0;
     }
-=======
-<<<<<<< HEAD
     /*
-=======
->>>>>>> origin/master
     
     private void AIPlayer()
     {
@@ -320,7 +283,6 @@ public class Board
     	//		Rule 5: Place in the position such as I may win in the most number of possible ways.
     }
     
->>>>>>> origin/master
 	//deep copy
     protected Board Clone()
     {
