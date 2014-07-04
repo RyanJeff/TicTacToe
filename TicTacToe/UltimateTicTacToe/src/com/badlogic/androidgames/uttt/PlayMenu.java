@@ -7,14 +7,15 @@ import com.badlogic.androidgames.framework.Graphics;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
 import com.badlogic.androidgames.framework.Screen;
 
-public class MainMenuScreen extends Screen 
-{		
-    public MainMenuScreen(Game game) 
-    {
-        super(game);               
-    }   
+public class PlayMenu extends Screen
+{
 
-    @Override
+	public PlayMenu(Game game) 
+	{
+		super(game);
+	}
+	
+	@Override
     public void update(float deltaTime) 
     {   
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -26,35 +27,26 @@ public class MainMenuScreen extends Screen
             TouchEvent event = touchEvents.get(i);
             if(event.type == TouchEvent.TOUCH_UP) 
             {
-            	//play
+            	//Single Player
             	if(inBounds(event, 60, 225, 205, 55)) 
                 {
             		
-            		game.setScreen(new PlayMenu(game));
+            		game.setScreen(new GameScreen(game));
                     if(Settings.soundEnabled)
                     {
                         Assets.click.play(1);
                     }
                     return;
                 }
-            	//options
+            	
+            	//Two Player
             	if(inBounds(event, 60, 305, 205, 55)) 
                 {
-                    game.setScreen(new OptionsScreen(game));
+                    game.setScreen(new GameScreen(game));
                     if(Settings.soundEnabled)
                     {
                         Assets.click.play(1);
                     }
-                    return;
-                }
-            	//quit
-                if(inBounds(event, 60, 390, 205, 55)) 
-                {
-                	if(Settings.soundEnabled)
-                    {
-                        Assets.click.play(1);
-                    }
-                	System.exit(0);
                     return;
                 }
             }
@@ -78,7 +70,7 @@ public class MainMenuScreen extends Screen
     public void present(float deltaTime) 
     {
         Graphics g = game.getGraphics();
-        g.drawPixmap(Assets.mainMenu, 0, 0);
+        g.drawPixmap(Assets.playMenu, 0, 0);
     }
 
     @Override

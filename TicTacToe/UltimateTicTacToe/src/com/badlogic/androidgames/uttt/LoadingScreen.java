@@ -19,6 +19,7 @@ public class LoadingScreen extends Screen
         Assets.background = g.newPixmap("background.png", PixmapFormat.RGB565);
         Assets.splash = g.newPixmap("SplashScreen.png", PixmapFormat.ARGB4444);
         Assets.mainMenu = g.newPixmap("mainmenu.png", PixmapFormat.ARGB4444);
+        Assets.playMenu = g.newPixmap("PlayMenu.png", PixmapFormat.ARGB4444);
         Assets.buttons = g.newPixmap("buttons.png", PixmapFormat.ARGB4444);
         Assets.options = g.newPixmap("OptionsMenu.png", PixmapFormat.ARGB4444);
         Assets.help1 = g.newPixmap("help1.png", PixmapFormat.ARGB4444);
@@ -45,7 +46,7 @@ public class LoadingScreen extends Screen
         Assets.bigO = g.newPixmap("bigO.png", PixmapFormat.ARGB4444);
         Assets.click = game.getAudio().newSound("click.mp3");
         Assets.clinkSound = game.getAudio().newSound("clinkSound.mp3");
-        
+        Assets.BGM = game.getAudio().newSound("BGM.mp3");
         Settings.load(game.getFileIO());
         game.setScreen(new SplashScreen(game));
     }

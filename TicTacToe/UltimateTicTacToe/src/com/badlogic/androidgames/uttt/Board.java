@@ -184,7 +184,7 @@ public class Board
 		}
     }
     
-/*    
+/*   
     //takes an index of a valid move and executes that move.
     public void MakeMove(int index)
 	{
@@ -252,36 +252,19 @@ public class Board
 		}
 		return numAvailMoves;
     }
-    public int RandomMove()
+    private int RandomMove()
     {
-    	int Start = 1;
-    	int End = NumMoves();
-    	Random random = new Random();
-    	for (int idx = 1; idx <= 1; ++idx)
-    		{
-    		//int randomInt = randomGenerator.nextInt(9);
-    	    }
-    	return 0;
+    	Random r = new Random();
+        int randnum = r.nextInt(NumMoves());
+    	return randnum;
+    }
+    
+    
+    public int AIPlayer()
+    {
+    	return RandomMove();
     }
     /*
-    
-    private void AIPlayer()
-    {
-    	// use java.util.Random
-    	// Make this take-over for player 2
-    	while(isPlayer1Turn == false)
-    	{
-    		int i = NumMoves();
-    		
-    	}
-    	
-    	// create a bunch of rules
-    	//		Rule 1: If I have a winning move, take it.
-    	//		Rule 2: If the opponent has a winning move, block it.
-    	//		Rule 3: If I can create a fork (two winning ways) after this move, do it.
-    	//		Rule 4: Do not let the opponent creating a fork after my move. (Opponent may block your winning move and create a fork.)
-    	//		Rule 5: Place in the position such as I may win in the most number of possible ways.
-    }
     
 	//deep copy
     protected Board Clone()
