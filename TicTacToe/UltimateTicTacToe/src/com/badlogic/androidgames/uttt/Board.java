@@ -194,7 +194,7 @@ public class Board
 		}
     }
     
-/*    
+/*   
     //takes an index of a valid move and executes that move.
     public void MakeMove(int index)
 	{
@@ -255,6 +255,7 @@ public class Board
 		}
 		return NumAvailMoves;
     }
+<<<<<<< HEAD
     
     public int RandomMove()
     {
@@ -284,7 +285,21 @@ public class Board
     	//		Rule 3: If I can create a fork (two winning ways) after this move, do it.
     	//		Rule 4: Do not let the opponent creating a fork after my move. (Opponent may block your winning move and create a fork.)
     	//		Rule 5: Place in the position such as I may win in the most number of possible ways.
+=======
+    private int RandomMove()
+    {
+    	Random r = new Random();
+        int randnum = r.nextInt(NumMoves());
+    	return randnum;
     }
+    
+    
+    public int AIPlayer()
+    {
+    	return RandomMove();
+>>>>>>> origin/master
+    }
+    /*
     
 	//deep copy
     protected Board Clone()

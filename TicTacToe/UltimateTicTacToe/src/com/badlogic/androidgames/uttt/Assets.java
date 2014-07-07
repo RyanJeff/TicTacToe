@@ -8,6 +8,7 @@ public class Assets
     public static Pixmap background;
     public static Pixmap splash;
     public static Pixmap mainMenu;
+    public static Pixmap playMenu;
     public static Pixmap buttons;
     public static Pixmap options;
     public static Pixmap help1;
@@ -34,6 +35,6 @@ public class Assets
     public static Pixmap bigO;
     public static Pixmap miniCats;
     public static Sound click;
-    public static Sound clinkSound;
-    //public static Sound BGM;
+    //public static Sound clinkSound;
+	//public static Sound BGM;
 }
