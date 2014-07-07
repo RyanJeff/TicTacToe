@@ -255,20 +255,19 @@ public class Board
 		}
 		return NumAvailMoves;
     }
-<<<<<<< HEAD
     
-    public int RandomMove()
+    private int RandomMove()
     {
-    	int Start = 1;
-    	int End = NumMoves();
-    	Random random = new Random();
-    	for (int idx = 1; idx <= 1; ++idx)
-    	{
-    		//int randomInt = randomGenerator.nextInt(9);
-    	}
-    	return 0;
+    	Random r = new Random();
+        int randnum = r.nextInt(NumMoves());
+    	return randnum;
     }
     
+    
+    public int AIPlayer()
+    {
+    	return RandomMove();
+    }
     /*
     private void AIPlayer()
     {
@@ -285,20 +284,7 @@ public class Board
     	//		Rule 3: If I can create a fork (two winning ways) after this move, do it.
     	//		Rule 4: Do not let the opponent creating a fork after my move. (Opponent may block your winning move and create a fork.)
     	//		Rule 5: Place in the position such as I may win in the most number of possible ways.
-=======
-    private int RandomMove()
-    {
-    	Random r = new Random();
-        int randnum = r.nextInt(NumMoves());
-    	return randnum;
-    }
-    
-    
-    public int AIPlayer()
-    {
-    	return RandomMove();
->>>>>>> origin/master
-    }
+
     /*
     
 	//deep copy

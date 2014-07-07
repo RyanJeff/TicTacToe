@@ -186,8 +186,6 @@ public class GameScreen extends Screen
 	                switch(masterboard_id)
 	                {
 	                	case 0:
-<<<<<<< HEAD
-		                	i = miniboard_id;
 		                	if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini0Playable)
 		        			{
 		        				board.grids[0][0].grid[i] = 1;
@@ -200,18 +198,19 @@ public class GameScreen extends Screen
 		        			{
 		        				board.grids[0][0].grid[i] = 2;
 		        				board.CheckGrid(2, board.grids[0][0]);
-=======
-		                	if(board.isPlayer1Turn)
-		                	{
-		                		
-		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
-		                		{
-			        				board.grids[0][0].grid[miniboard_id] = 1;
-			        				board.isPlayer1Turn = false;
-			        				board.nextMoveRow = rowP;
-			        				board.nextMoveCol = colP;
-			        				board.CheckGrid(1, board.grids[0][0]);
-		                		}
+		        				
+			                	if(board.isPlayer1Turn)
+			                	{
+			                		
+			                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+			                		{
+				        				board.grids[0][0].grid[miniboard_id] = 1;
+				        				board.isPlayer1Turn = false;
+				        				board.nextMoveRow = rowP;
+				        				board.nextMoveCol = colP;
+				        				board.CheckGrid(1, board.grids[0][0]);
+			                		}
+			        			}
 		        			}
 		                	else if(PlayOption == false) 
 		        			{
@@ -243,17 +242,13 @@ public class GameScreen extends Screen
 		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
 		        			{
 		        				board.grids[0][0].grid[miniboard_id] = 2;
->>>>>>> origin/master
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
 		        			}
-		                	
 		                	break;
 		                
 	                	case 1:
-<<<<<<< HEAD
-	                		i = miniboard_id;
 		        			if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini1Playable)
 		        			{
 		        				board.grids[0][1].grid[i] = 1;
@@ -267,19 +262,19 @@ public class GameScreen extends Screen
 		        			{
 		        				board.grids[0][1].grid[i] = 2;
 		        				board.CheckGrid(2, board.grids[0][1]);
-=======
 		        			
-		        			if(board.isPlayer1Turn)
-		                	{
-		                		
-		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
-		                		{
-			        				board.grids[0][1].grid[miniboard_id] = 1;
-			        				board.isPlayer1Turn = false;
-			        				board.nextMoveRow = rowP;
-			        				board.nextMoveCol = colP;
-			        				board.CheckGrid(1, board.grids[0][1]);
-		                		}
+			        			if(board.isPlayer1Turn)
+			                	{
+			                		
+			                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+			                		{
+				        				board.grids[0][1].grid[miniboard_id] = 1;
+				        				board.isPlayer1Turn = false;
+				        				board.nextMoveRow = rowP;
+				        				board.nextMoveCol = colP;
+				        				board.CheckGrid(1, board.grids[0][1]);
+			                		}
+			        			}
 		        			}
 		                	else if(PlayOption == false) 
 		        			{
@@ -311,7 +306,6 @@ public class GameScreen extends Screen
 		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
 		        			{
 		        				board.grids[0][1].grid[miniboard_id] = 2;
->>>>>>> origin/master
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
@@ -320,8 +314,6 @@ public class GameScreen extends Screen
 		                	break;
 		        		
 	                	case 2:
-<<<<<<< HEAD
-	                		i = miniboard_id;
 	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini2Playable)
 		        			{
 		        				board.grids[0][2].grid[i] = 1;
@@ -335,18 +327,18 @@ public class GameScreen extends Screen
 		        			{
 		        				board.grids[0][2].grid[i] = 2;
 		        				board.CheckGrid(2, board.grids[0][2]);
-=======
-	                		if(board.isPlayer1Turn)
-		                	{
-		                		
-		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
-		                		{
-			        				board.grids[0][2].grid[miniboard_id] = 1;
-			        				board.isPlayer1Turn = false;
-			        				board.nextMoveRow = rowP;
-			        				board.nextMoveCol = colP;
-			        				board.CheckGrid(1, board.grids[0][2]);
-		                		}
+		        				
+		                		if(board.isPlayer1Turn)
+			                	{
+			                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+			                		{
+				        				board.grids[0][2].grid[miniboard_id] = 1;
+				        				board.isPlayer1Turn = false;
+				        				board.nextMoveRow = rowP;
+				        				board.nextMoveCol = colP;
+				        				board.CheckGrid(1, board.grids[0][2]);
+			                		}
+				        		}
 		        			}
 		                	else if(PlayOption == false) 
 		        			{
@@ -378,7 +370,6 @@ public class GameScreen extends Screen
 		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
 		        			{
 		        				board.grids[0][2].grid[miniboard_id] = 2;
->>>>>>> origin/master
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
@@ -387,8 +378,6 @@ public class GameScreen extends Screen
 		        			break;
 		        			
 	                	case 3:
-<<<<<<< HEAD
-	                		i = miniboard_id;
 	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini3Playable)
 		        			{
 		        				board.grids[1][0].grid[i] = 1;
@@ -402,18 +391,19 @@ public class GameScreen extends Screen
 		        			{
 		        				board.grids[1][0].grid[i] = 2;
 		        				board.CheckGrid(2, board.grids[1][0]);
-=======
-	                		if(board.isPlayer1Turn)
-		                	{
-		                		
-		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
-		                		{
-			        				board.grids[1][0].grid[miniboard_id] = 1;
-			        				board.isPlayer1Turn = false;
-			        				board.nextMoveRow = rowP;
-			        				board.nextMoveCol = colP;
-			        				board.CheckGrid(1, board.grids[1][0]);
-		                		}
+		        				
+		                		if(board.isPlayer1Turn)
+			                	{
+			                		
+			                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+			                		{
+				        				board.grids[1][0].grid[miniboard_id] = 1;
+				        				board.isPlayer1Turn = false;
+				        				board.nextMoveRow = rowP;
+				        				board.nextMoveCol = colP;
+				        				board.CheckGrid(1, board.grids[1][0]);
+			                		}
+			        			}
 		        			}
 		                	else if(PlayOption == false) 
 		        			{
@@ -445,7 +435,6 @@ public class GameScreen extends Screen
 		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
 		        			{
 		        				board.grids[1][0].grid[miniboard_id] = 2;
->>>>>>> origin/master
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
@@ -454,8 +443,6 @@ public class GameScreen extends Screen
 		                	break;
 		        		
 	                	case 4:
-<<<<<<< HEAD
-	                		i = miniboard_id;
 	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini4Playable)
 		        			{
 		        				board.grids[1][1].grid[i] = 1;
@@ -469,18 +456,19 @@ public class GameScreen extends Screen
 		        			{
 		        				board.grids[1][1].grid[i] = 2;
 		        				board.CheckGrid(2, board.grids[1][1]);
-=======
-	                		if(board.isPlayer1Turn)
-		                	{
-		                		
-		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
-		                		{
-			        				board.grids[1][1].grid[miniboard_id] = 1;
-			        				board.isPlayer1Turn = false;
-			        				board.nextMoveRow = rowP;
-			        				board.nextMoveCol = colP;
-			        				board.CheckGrid(1, board.grids[1][1]);
-		                		}
+		        				
+		                		if(board.isPlayer1Turn)
+			                	{
+			                		
+			                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+			                		{
+				        				board.grids[1][1].grid[miniboard_id] = 1;
+				        				board.isPlayer1Turn = false;
+				        				board.nextMoveRow = rowP;
+				        				board.nextMoveCol = colP;
+				        				board.CheckGrid(1, board.grids[1][1]);
+			                		}
+			        			}
 		        			}
 		                	else if(PlayOption == false) 
 		        			{
@@ -512,7 +500,6 @@ public class GameScreen extends Screen
 		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
 		        			{
 		        				board.grids[1][1].grid[miniboard_id] = 2;
->>>>>>> origin/master
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
@@ -521,8 +508,6 @@ public class GameScreen extends Screen
 		                	break;
 		        			
 	                	case 5:
-<<<<<<< HEAD
-	                		i = miniboard_id;
 	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini5Playable)
 		        			{
 		        				board.grids[1][2].grid[i] = 1;
@@ -536,19 +521,21 @@ public class GameScreen extends Screen
 		        			{
 		        				board.grids[1][2].grid[i] = 2;
 		        				board.CheckGrid(2, board.grids[1][2]);
-=======
-	                		if(board.isPlayer1Turn)
-		                	{
-		                		
-		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
-		                		{
-			        				board.grids[1][2].grid[miniboard_id] = 1;
-			        				board.isPlayer1Turn = false;
-			        				board.nextMoveRow = rowP;
-			        				board.nextMoveCol = colP;
-			        				board.CheckGrid(1, board.grids[1][2]);
-		                		}
+		        				
+		                		if(board.isPlayer1Turn)
+			                	{
+			                		
+			                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+			                		{
+				        				board.grids[1][2].grid[miniboard_id] = 1;
+				        				board.isPlayer1Turn = false;
+				        				board.nextMoveRow = rowP;
+				        				board.nextMoveCol = colP;
+				        				board.CheckGrid(1, board.grids[1][2]);
+			                		}
+			        			}
 		        			}
+	                		
 		                	else if(PlayOption == false) 
 		        			{
 		                		//do AI selection
@@ -579,7 +566,6 @@ public class GameScreen extends Screen
 		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
 		        			{
 		        				board.grids[1][2].grid[miniboard_id] = 2;
->>>>>>> origin/master
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
@@ -588,8 +574,6 @@ public class GameScreen extends Screen
 		                	break;
 		        			
 	                	case 6:
-<<<<<<< HEAD
-	                		i = miniboard_id;
 	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini6Playable)
 		        			{
 		        				board.grids[2][0].grid[i] = 1;
@@ -603,19 +587,21 @@ public class GameScreen extends Screen
 		        			{
 		        				board.grids[2][0].grid[i] = 2;
 		        				board.CheckGrid(2, board.grids[2][0]);
-=======
-	                		if(board.isPlayer1Turn)
-		                	{
-		                		
-		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
-		                		{
-			        				board.grids[2][0].grid[miniboard_id] = 1;
-			        				board.isPlayer1Turn = false;
-			        				board.nextMoveRow = rowP;
-			        				board.nextMoveCol = colP;
-			        				board.CheckGrid(1, board.grids[2][0]);
-		                		}
+		        				
+		                		if(board.isPlayer1Turn)
+			                	{
+			                		
+			                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+			                		{
+				        				board.grids[2][0].grid[miniboard_id] = 1;
+				        				board.isPlayer1Turn = false;
+				        				board.nextMoveRow = rowP;
+				        				board.nextMoveCol = colP;
+				        				board.CheckGrid(1, board.grids[2][0]);
+			                		}
+			        			}
 		        			}
+	                		
 		                	else if(PlayOption == false) 
 		        			{
 		                		//do AI selection
@@ -646,7 +632,6 @@ public class GameScreen extends Screen
 		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
 		        			{
 		        				board.grids[2][0].grid[miniboard_id] = 2;
->>>>>>> origin/master
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
@@ -655,8 +640,6 @@ public class GameScreen extends Screen
 		                	break;
 		        			
 	                	case 7:
-<<<<<<< HEAD
-	                		i = miniboard_id;
 	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini7Playable)
 		        			{
 		        				board.grids[2][1].grid[i] = 1;
@@ -670,19 +653,21 @@ public class GameScreen extends Screen
 		        			{
 		        				board.grids[2][1].grid[i] = 2;
 		        				board.CheckGrid(2, board.grids[2][1]);
-=======
-		                	if(board.isPlayer1Turn)
-		                	{
-		                		
-		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
-		                		{
-			        				board.grids[2][1].grid[miniboard_id] = 1;
-			        				board.isPlayer1Turn = false;
-			        				board.nextMoveRow = rowP;
-			        				board.nextMoveCol = colP;
-			        				board.CheckGrid(1, board.grids[2][1]);
-		                		}
+		        				
+			                	if(board.isPlayer1Turn)
+			                	{
+			                		
+			                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+			                		{
+				        				board.grids[2][1].grid[miniboard_id] = 1;
+				        				board.isPlayer1Turn = false;
+				        				board.nextMoveRow = rowP;
+				        				board.nextMoveCol = colP;
+				        				board.CheckGrid(1, board.grids[2][1]);
+			                		}
+			        			}
 		        			}
+	                		
 		                	else if(PlayOption == false) 
 		        			{
 		                		//do AI selection
@@ -713,7 +698,6 @@ public class GameScreen extends Screen
 		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
 		        			{
 		        				board.grids[2][1].grid[miniboard_id] = 2;
->>>>>>> origin/master
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
@@ -721,8 +705,6 @@ public class GameScreen extends Screen
 		                	break;
 		        			
 	                	case 8:
-<<<<<<< HEAD
-	                		i = miniboard_id;
 	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini8Playable)
 		        			{
 		        				board.grids[2][2].grid[i] = 1;
@@ -735,18 +717,19 @@ public class GameScreen extends Screen
 		        			{
 		        				board.grids[2][2].grid[i] = 2;
 		        				board.CheckGrid(2, board.grids[2][2]);
-=======
-		                	if(board.isPlayer1Turn)
-		                	{
-		                		
-		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
-		                		{
-			        				board.grids[2][2].grid[miniboard_id] = 1;
-			        				board.isPlayer1Turn = false;
-			        				board.nextMoveRow = rowP;
-			        				board.nextMoveCol = colP;
-			        				board.CheckGrid(1, board.grids[2][2]);
-		                		}
+		        				
+			                	if(board.isPlayer1Turn)
+			                	{
+			                		
+			                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+			                		{
+				        				board.grids[2][2].grid[miniboard_id] = 1;
+				        				board.isPlayer1Turn = false;
+				        				board.nextMoveRow = rowP;
+				        				board.nextMoveCol = colP;
+				        				board.CheckGrid(1, board.grids[2][2]);
+			                		}
+			        			}
 		        			}
 		                	else if(PlayOption == false) 
 		        			{
@@ -778,7 +761,6 @@ public class GameScreen extends Screen
 		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
 		        			{
 		        				board.grids[2][2].grid[miniboard_id] = 2;
->>>>>>> origin/master
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
