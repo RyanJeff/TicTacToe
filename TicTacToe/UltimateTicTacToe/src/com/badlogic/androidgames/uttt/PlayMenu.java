@@ -30,7 +30,7 @@ public class PlayMenu extends Screen
             	//Single Player
             	if(inBounds(event, 60, 225, 205, 55)) 
                 {
-            		
+            		GameScreen.PlayOption = false;
             		game.setScreen(new GameScreen(game));
                     if(Settings.soundEnabled)
                     {
@@ -42,6 +42,7 @@ public class PlayMenu extends Screen
             	//Two Player
             	if(inBounds(event, 60, 305, 205, 55)) 
                 {
+            		GameScreen.PlayOption = true;
                     game.setScreen(new GameScreen(game));
                     if(Settings.soundEnabled)
                     {

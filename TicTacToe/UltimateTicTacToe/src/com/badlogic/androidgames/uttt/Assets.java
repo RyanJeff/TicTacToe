@@ -34,7 +34,6 @@ public class Assets
     public static Pixmap bigX;
     public static Pixmap bigO;
     public static Sound click;
-    public static Sound clinkSound;
-    //public static Sound BGM;
-	public static Sound BGM;
+    //public static Sound clinkSound;
+	//public static Sound BGM;
 }

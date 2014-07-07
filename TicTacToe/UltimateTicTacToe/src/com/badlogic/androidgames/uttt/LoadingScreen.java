@@ -45,8 +45,8 @@ public class LoadingScreen extends Screen
         Assets.bigX = g.newPixmap("bigX.png", PixmapFormat.ARGB4444);
         Assets.bigO = g.newPixmap("bigO.png", PixmapFormat.ARGB4444);
         Assets.click = game.getAudio().newSound("click.mp3");
-        Assets.clinkSound = game.getAudio().newSound("clinkSound.mp3");
-        Assets.BGM = game.getAudio().newSound("BGM.mp3");
+        //Assets.clinkSound = game.getAudio().newSound("clinkSound.mp3");
+        //Assets.BGM = game.getAudio().newSound("BGM.mp3");
         Settings.load(game.getFileIO());
         game.setScreen(new SplashScreen(game));
     }

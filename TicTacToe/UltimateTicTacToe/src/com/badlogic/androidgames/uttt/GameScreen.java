@@ -23,8 +23,12 @@ public class GameScreen extends Screen
         Running,
         Paused,
         GameOver,
-        SinglePlayer
+        Play
+        //SinglePlayer,
+        //TwoPlayer
     }
+    
+    public static boolean PlayOption = true;
 
     GameState state = GameState.Ready;
     Board board;
@@ -150,7 +154,7 @@ public class GameScreen extends Screen
                 
                 if(isFirstMove)
                 {
-                	i = miniboard_id;
+  
     				board.grids[row][col].grid[i] = 1;
     				board.isPlayer1Turn = false;
     				board.nextMoveRow = rowP;
@@ -163,19 +167,48 @@ public class GameScreen extends Screen
 	                switch(masterboard_id)
 	                {
 	                	case 0:
-		                	i = miniboard_id;
-		                	if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
-		        			{
-		        				board.grids[0][0].grid[i] = 1;
-		        				board.isPlayer1Turn = false;
-		        				board.nextMoveRow = rowP;
-		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[0][0]);
-		        				
+		                	if(board.isPlayer1Turn)
+		                	{
+		                		
+		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+			        				board.grids[0][0].grid[miniboard_id] = 1;
+			        				board.isPlayer1Turn = false;
+			        				board.nextMoveRow = rowP;
+			        				board.nextMoveCol = colP;
+			        				board.CheckGrid(1, board.grids[0][0]);
+		                		}
 		        			}
-		                	else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		                	else if(PlayOption == false) 
 		        			{
-		        				board.grids[0][0].grid[i] = 2;
+		                		//do AI selection
+		                		if( board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+		                			int move = board.AIPlayer();
+		                			int validMoveNum = 0;
+		                			for(int j = 0; j < 9; ++j)
+		                			{
+		                				if(board.grids[0][0].grid[j] == 0)
+		                				{
+		                					if(validMoveNum == move)
+		                					{
+		                						board.grids[0][0].grid[j] = 2;
+		    			        				board.isPlayer1Turn = true;
+		    			        				board.nextMoveRow = rowP;
+		    			        				board.nextMoveCol = colP;
+		    			        				board.CheckGrid(2, board.grids[0][0]);
+		                					}
+		                					else
+		                					{
+		                						validMoveNum++;
+		                					}
+		                				}
+		                			}
+		                		}
+		        			}
+		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		        			{
+		        				board.grids[0][0].grid[miniboard_id] = 2;
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
@@ -184,38 +217,99 @@ public class GameScreen extends Screen
 		                	break;
 		                
 	                	case 1:
-	                		i = miniboard_id;
-		        			if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
-		        			{
-		        				board.grids[0][1].grid[i] = 1;
-		        				board.isPlayer1Turn = false;
-		        				board.nextMoveRow = rowP;
-		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[0][1]);
+		        			
+		        			if(board.isPlayer1Turn)
+		                	{
+		                		
+		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+			        				board.grids[0][1].grid[miniboard_id] = 1;
+			        				board.isPlayer1Turn = false;
+			        				board.nextMoveRow = rowP;
+			        				board.nextMoveCol = colP;
+			        				board.CheckGrid(1, board.grids[0][1]);
+		                		}
 		        			}
-		        			else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		                	else if(PlayOption == false) 
 		        			{
-		        				board.grids[0][1].grid[i] = 2;
+		                		//do AI selection
+		                		if( board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+		                			int move = board.AIPlayer();
+		                			int validMoveNum = 0;
+		                			for(int j = 0; j < 9; ++j)
+		                			{
+		                				if(board.grids[0][1].grid[j] == 0)
+		                				{
+		                					if(validMoveNum == move)
+		                					{
+		                						board.grids[0][1].grid[j] = 2;
+		    			        				board.isPlayer1Turn = true;
+		    			        				board.nextMoveRow = rowP;
+		    			        				board.nextMoveCol = colP;
+		    			        				board.CheckGrid(2, board.grids[0][1]);
+		                					}
+		                					else
+		                					{
+		                						validMoveNum++;
+		                					}
+		                				}
+		                			}
+		                		}
+		        			}
+		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		        			{
+		        				board.grids[0][1].grid[miniboard_id] = 2;
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
 		        				board.CheckGrid(2, board.grids[0][1]);
 		        			}
-		        			break;
+		                	break;
 		        		
 	                	case 2:
-	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
-		        			{
-		        				board.grids[0][2].grid[i] = 1;
-		        				board.isPlayer1Turn = false;
-		        				board.nextMoveRow = rowP;
-		        				board.nextMoveCol = colP;	
-		        				board.CheckGrid(1, board.grids[0][2]);
+	                		if(board.isPlayer1Turn)
+		                	{
+		                		
+		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+			        				board.grids[0][2].grid[miniboard_id] = 1;
+			        				board.isPlayer1Turn = false;
+			        				board.nextMoveRow = rowP;
+			        				board.nextMoveCol = colP;
+			        				board.CheckGrid(1, board.grids[0][2]);
+		                		}
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		                	else if(PlayOption == false) 
 		        			{
-		        				board.grids[0][2].grid[i] = 2;
+		                		//do AI selection
+		                		if( board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+		                			int move = board.AIPlayer();
+		                			int validMoveNum = 0;
+		                			for(int j = 0; j < 9; ++j)
+		                			{
+		                				if(board.grids[0][2].grid[j] == 0)
+		                				{
+		                					if(validMoveNum == move)
+		                					{
+		                						board.grids[0][2].grid[j] = 2;
+		    			        				board.isPlayer1Turn = true;
+		    			        				board.nextMoveRow = rowP;
+		    			        				board.nextMoveCol = colP;
+		    			        				board.CheckGrid(2, board.grids[0][2]);
+		                					}
+		                					else
+		                					{
+		                						validMoveNum++;
+		                					}
+		                				}
+		                			}
+		                		}
+		        			}
+		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		        			{
+		        				board.grids[0][2].grid[miniboard_id] = 2;
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
@@ -224,124 +318,304 @@ public class GameScreen extends Screen
 		        			break;
 		        			
 	                	case 3:
-	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
-		        			{
-		        				board.grids[1][0].grid[i] = 1;
-		        				board.isPlayer1Turn = false;
-		        				board.nextMoveRow = rowP;
-		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[1][0]);
+	                		if(board.isPlayer1Turn)
+		                	{
+		                		
+		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+			        				board.grids[1][0].grid[miniboard_id] = 1;
+			        				board.isPlayer1Turn = false;
+			        				board.nextMoveRow = rowP;
+			        				board.nextMoveCol = colP;
+			        				board.CheckGrid(1, board.grids[1][0]);
+		                		}
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		                	else if(PlayOption == false) 
 		        			{
-		        				board.grids[1][0].grid[i] = 2;
+		                		//do AI selection
+		                		if( board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+		                			int move = board.AIPlayer();
+		                			int validMoveNum = 0;
+		                			for(int j = 0; j < 9; ++j)
+		                			{
+		                				if(board.grids[1][0].grid[j] == 0)
+		                				{
+		                					if(validMoveNum == move)
+		                					{
+		                						board.grids[1][0].grid[j] = 2;
+		    			        				board.isPlayer1Turn = true;
+		    			        				board.nextMoveRow = rowP;
+		    			        				board.nextMoveCol = colP;
+		    			        				board.CheckGrid(2, board.grids[1][0]);
+		                					}
+		                					else
+		                					{
+		                						validMoveNum++;
+		                					}
+		                				}
+		                			}
+		                		}
+		        			}
+		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		        			{
+		        				board.grids[1][0].grid[miniboard_id] = 2;
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
 		        				board.CheckGrid(2, board.grids[1][0]);
 		        			}
-		        			break;
+		                	break;
 		        		
 	                	case 4:
-	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
-		        			{
-		        				board.grids[1][1].grid[i] = 1;
-		        				board.isPlayer1Turn = false;
-		        				board.nextMoveRow = rowP;
-		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[1][1]);
+	                		if(board.isPlayer1Turn)
+		                	{
+		                		
+		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+			        				board.grids[1][1].grid[miniboard_id] = 1;
+			        				board.isPlayer1Turn = false;
+			        				board.nextMoveRow = rowP;
+			        				board.nextMoveCol = colP;
+			        				board.CheckGrid(1, board.grids[1][1]);
+		                		}
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		                	else if(PlayOption == false) 
 		        			{
-		        				board.grids[1][1].grid[i] = 2;
+		                		//do AI selection
+		                		if( board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+		                			int move = board.AIPlayer();
+		                			int validMoveNum = 0;
+		                			for(int j = 0; j < 9; ++j)
+		                			{
+		                				if(board.grids[1][1].grid[j] == 0)
+		                				{
+		                					if(validMoveNum == move)
+		                					{
+		                						board.grids[1][1].grid[j] = 2;
+		    			        				board.isPlayer1Turn = true;
+		    			        				board.nextMoveRow = rowP;
+		    			        				board.nextMoveCol = colP;
+		    			        				board.CheckGrid(2, board.grids[1][1]);
+		                					}
+		                					else
+		                					{
+		                						validMoveNum++;
+		                					}
+		                				}
+		                			}
+		                		}
+		        			}
+		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		        			{
+		        				board.grids[1][1].grid[miniboard_id] = 2;
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
 		        				board.CheckGrid(2, board.grids[1][1]);
 		        			}
-		        			break;
+		                	break;
 		        			
 	                	case 5:
-	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
-		        			{
-		        				board.grids[1][2].grid[i] = 1;
-		        				board.isPlayer1Turn = false;
-		        				board.nextMoveRow = rowP;
-		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[1][2]);
+	                		if(board.isPlayer1Turn)
+		                	{
+		                		
+		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+			        				board.grids[1][2].grid[miniboard_id] = 1;
+			        				board.isPlayer1Turn = false;
+			        				board.nextMoveRow = rowP;
+			        				board.nextMoveCol = colP;
+			        				board.CheckGrid(1, board.grids[1][2]);
+		                		}
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		                	else if(PlayOption == false) 
 		        			{
-		        				board.grids[1][2].grid[i] = 2;
+		                		//do AI selection
+		                		if( board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+		                			int move = board.AIPlayer();
+		                			int validMoveNum = 0;
+		                			for(int j = 0; j < 9; ++j)
+		                			{
+		                				if(board.grids[1][2].grid[j] == 0)
+		                				{
+		                					if(validMoveNum == move)
+		                					{
+		                						board.grids[1][2].grid[j] = 2;
+		    			        				board.isPlayer1Turn = true;
+		    			        				board.nextMoveRow = rowP;
+		    			        				board.nextMoveCol = colP;
+		    			        				board.CheckGrid(2, board.grids[1][2]);
+		                					}
+		                					else
+		                					{
+		                						validMoveNum++;
+		                					}
+		                				}
+		                			}
+		                		}
+		        			}
+		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		        			{
+		        				board.grids[1][2].grid[miniboard_id] = 2;
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
 		        				board.CheckGrid(2, board.grids[1][2]);
 		        			}
-		        			break;
+		                	break;
 		        			
 	                	case 6:
-	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
-		        			{
-		        				board.grids[2][0].grid[i] = 1;
-		        				board.isPlayer1Turn = false;
-		        				board.nextMoveRow = rowP;
-		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[2][0]);
+	                		if(board.isPlayer1Turn)
+		                	{
+		                		
+		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+			        				board.grids[2][0].grid[miniboard_id] = 1;
+			        				board.isPlayer1Turn = false;
+			        				board.nextMoveRow = rowP;
+			        				board.nextMoveCol = colP;
+			        				board.CheckGrid(1, board.grids[2][0]);
+		                		}
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		                	else if(PlayOption == false) 
 		        			{
-		        				board.grids[2][0].grid[i] = 2;
+		                		//do AI selection
+		                		if( board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+		                			int move = board.AIPlayer();
+		                			int validMoveNum = 0;
+		                			for(int j = 0; j < 9; ++j)
+		                			{
+		                				if(board.grids[2][0].grid[j] == 0)
+		                				{
+		                					if(validMoveNum == move)
+		                					{
+		                						board.grids[2][0].grid[j] = 2;
+		    			        				board.isPlayer1Turn = true;
+		    			        				board.nextMoveRow = rowP;
+		    			        				board.nextMoveCol = colP;
+		    			        				board.CheckGrid(2, board.grids[2][0]);
+		                					}
+		                					else
+		                					{
+		                						validMoveNum++;
+		                					}
+		                				}
+		                			}
+		                		}
+		        			}
+		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		        			{
+		        				board.grids[2][0].grid[miniboard_id] = 2;
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
 		        				board.CheckGrid(2, board.grids[2][0]);
 		        			}
-		        			break;
+		                	break;
 		        			
 	                	case 7:
-	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
-		        			{
-		        				board.grids[2][1].grid[i] = 1;
-		        				board.isPlayer1Turn = false;
-		        				board.nextMoveRow = rowP;
-		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[2][1]);
+		                	if(board.isPlayer1Turn)
+		                	{
+		                		
+		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+			        				board.grids[2][1].grid[miniboard_id] = 1;
+			        				board.isPlayer1Turn = false;
+			        				board.nextMoveRow = rowP;
+			        				board.nextMoveCol = colP;
+			        				board.CheckGrid(1, board.grids[2][1]);
+		                		}
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		                	else if(PlayOption == false) 
 		        			{
-		        				board.grids[2][1].grid[i] = 2;
+		                		//do AI selection
+		                		if( board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+		                			int move = board.AIPlayer();
+		                			int validMoveNum = 0;
+		                			for(int j = 0; j < 9; ++j)
+		                			{
+		                				if(board.grids[2][1].grid[j] == 0)
+		                				{
+		                					if(validMoveNum == move)
+		                					{
+		                						board.grids[2][1].grid[j] = 2;
+		    			        				board.isPlayer1Turn = true;
+		    			        				board.nextMoveRow = rowP;
+		    			        				board.nextMoveCol = colP;
+		    			        				board.CheckGrid(2, board.grids[2][1]);
+		                					}
+		                					else
+		                					{
+		                						validMoveNum++;
+		                					}
+		                				}
+		                			}
+		                		}
+		        			}
+		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		        			{
+		        				board.grids[2][1].grid[miniboard_id] = 2;
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
 		        				board.CheckGrid(2, board.grids[2][1]);
 		        			}
-		        			break;
+		                	break;
 		        			
 	                	case 8:
-	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
-		        			{
-		        				board.grids[2][2].grid[i] = 1;
-		        				board.isPlayer1Turn = false;
-		        				board.nextMoveRow = rowP;
-		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[2][2]);
+		                	if(board.isPlayer1Turn)
+		                	{
+		                		
+		                		if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+			        				board.grids[2][2].grid[miniboard_id] = 1;
+			        				board.isPlayer1Turn = false;
+			        				board.nextMoveRow = rowP;
+			        				board.nextMoveCol = colP;
+			        				board.CheckGrid(1, board.grids[2][2]);
+		                		}
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		                	else if(PlayOption == false) 
 		        			{
-		        				board.grids[2][2].grid[i] = 2;
+		                		//do AI selection
+		                		if( board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		                		{
+		                			int move = board.AIPlayer();
+		                			int validMoveNum = 0;
+		                			for(int j = 0; j < 9; ++j)
+		                			{
+		                				if(board.grids[2][2].grid[j] == 0)
+		                				{
+		                					if(validMoveNum == move)
+		                					{
+		                						board.grids[2][2].grid[j] = 2;
+		    			        				board.isPlayer1Turn = true;
+		    			        				board.nextMoveRow = rowP;
+		    			        				board.nextMoveCol = colP;
+		    			        				board.CheckGrid(2, board.grids[2][2]);
+		                					}
+		                					else
+		                					{
+		                						validMoveNum++;
+		                					}
+		                				}
+		                			}
+		                		}
+		        			}
+		                	else if(board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[miniboard_id] == 0)
+		        			{
+		        				board.grids[2][2].grid[miniboard_id] = 2;
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
 		        				board.CheckGrid(2, board.grids[2][2]);
 		        			}
-		        			break;
+		                	break;
 	                } 
 	            }
             }
@@ -403,7 +677,11 @@ public class GameScreen extends Screen
 
     @Override
     public void present(float deltaTime) 
-    {    	
+    {   
+    	if(state == GameState.Play)
+        {
+            drawPlayUI();
+        }
         if(state == GameState.Ready)
         {
             drawReadyUI();
@@ -483,6 +761,12 @@ public class GameScreen extends Screen
         }
     }
 
+    private void drawPlayUI() 
+    {
+        Graphics g = game.getGraphics();      
+        g.drawPixmap(Assets.playMenu, 0, 0);
+    }
+    
     private void drawPausedUI() 
     {
         Graphics g = game.getGraphics();      
