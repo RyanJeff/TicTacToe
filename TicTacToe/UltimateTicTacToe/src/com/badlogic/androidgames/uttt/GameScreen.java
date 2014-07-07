@@ -77,7 +77,17 @@ public class GameScreen extends Screen
     
     public int masterboard_id;
     public int miniboard_id;
-    boolean isFirstMove = true;  
+    boolean isFirstMove = true;
+    public boolean mini0Playable = true;
+    public boolean mini1Playable = true;
+    public boolean mini2Playable = true;
+    public boolean mini3Playable = true;
+    public boolean mini4Playable = true;
+    public boolean mini5Playable = true;
+    public boolean mini6Playable = true;
+    public boolean mini7Playable = true;
+    public boolean mini8Playable = true;
+    
     private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) 
     {    
     	int len = touchEvents.size();
@@ -108,22 +118,31 @@ public class GameScreen extends Screen
            //masterboard ids
                 if(row == 0 && col == 0)
                 	masterboard_id = 0;   //top left
+                	mini0Playable = true;
                 if(row == 0 && col == 1)
                 	masterboard_id = 1;   //top mid
+                	mini1Playable = true;
                 if(row == 0 && col == 2)
                 	masterboard_id = 2;   //top right
+            		mini2Playable = true;
                 if(row == 1 && col == 0)
                 	masterboard_id = 3;   //mid left
+            		mini3Playable = true;
                 if(row == 1 && col == 1)
                 	masterboard_id = 4;   //mid mid
+            		mini4Playable = true;
                 if(row == 1 && col == 2)
                 	masterboard_id = 5;   //mid right
+            		mini5Playable = true;
                 if(row == 2 && col == 0)
                 	masterboard_id = 6;   //btm left
+            		mini6Playable = true;
                 if(row == 2 && col == 1)
                 	masterboard_id = 7;   //btm mid
+            		mini7Playable = true;
                 if(row == 2 && col == 2)
                 	masterboard_id = 8;   //btm right
+            		mini8Playable = true;
                 
            //miniboard ids
                 if(rowP == 0 && colP == 0)
@@ -158,194 +177,210 @@ public class GameScreen extends Screen
                 	isFirstMove = false;
                 }
                 
-                if(!isFirstMove)
+                if(!isFirstMove && board.grids[row][col].grid[i] == 0)
                 {
 	                switch(masterboard_id)
 	                {
 	                	case 0:
 		                	i = miniboard_id;
-		                	if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		                	if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini0Playable)
 		        			{
 		        				board.grids[0][0].grid[i] = 1;
+		        				board.CheckGrid(1, board.grids[0][0]);
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[0][0]);
-		        				
 		        			}
-		                	else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		                	else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini0Playable)
 		        			{
 		        				board.grids[0][0].grid[i] = 2;
+		        				board.CheckGrid(2, board.grids[0][0]);
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(2, board.grids[0][0]);
 		        			}
+		                	
 		                	break;
 		                
 	                	case 1:
 	                		i = miniboard_id;
-		        			if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		        			if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini1Playable)
 		        			{
 		        				board.grids[0][1].grid[i] = 1;
+		        				board.CheckGrid(1, board.grids[0][1]);
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[0][1]);
+		        				
 		        			}
-		        			else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+		        			else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini1Playable)
 		        			{
 		        				board.grids[0][1].grid[i] = 2;
+		        				board.CheckGrid(2, board.grids[0][1]);
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(2, board.grids[0][1]);
+		        				
 		        			}
 		        			break;
 		        		
 	                	case 2:
 	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini2Playable)
 		        			{
 		        				board.grids[0][2].grid[i] = 1;
+		        				board.CheckGrid(1, board.grids[0][2]);
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;	
-		        				board.CheckGrid(1, board.grids[0][2]);
+		        				
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini2Playable)
 		        			{
 		        				board.grids[0][2].grid[i] = 2;
+		        				board.CheckGrid(2, board.grids[0][2]);
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(2, board.grids[0][2]);
+		        				
 		        			}
 		        			break;
 		        			
 	                	case 3:
 	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini3Playable)
 		        			{
 		        				board.grids[1][0].grid[i] = 1;
+		        				board.CheckGrid(1, board.grids[1][0]);
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[1][0]);
+		        				
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini3Playable)
 		        			{
 		        				board.grids[1][0].grid[i] = 2;
+		        				board.CheckGrid(2, board.grids[1][0]);
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(2, board.grids[1][0]);
+		        				
 		        			}
 		        			break;
 		        		
 	                	case 4:
 	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini4Playable)
 		        			{
 		        				board.grids[1][1].grid[i] = 1;
+		        				board.CheckGrid(1, board.grids[1][1]);
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[1][1]);
+		        				
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini4Playable)
 		        			{
 		        				board.grids[1][1].grid[i] = 2;
+		        				board.CheckGrid(2, board.grids[1][1]);
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(2, board.grids[1][1]);
+		        				
 		        			}
 		        			break;
 		        			
 	                	case 5:
 	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini5Playable)
 		        			{
 		        				board.grids[1][2].grid[i] = 1;
+		        				board.CheckGrid(1, board.grids[1][2]);
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[1][2]);
+		        				
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini5Playable)
 		        			{
 		        				board.grids[1][2].grid[i] = 2;
+		        				board.CheckGrid(2, board.grids[1][2]);
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(2, board.grids[1][2]);
+		        				
 		        			}
 		        			break;
 		        			
 	                	case 6:
 	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini6Playable)
 		        			{
 		        				board.grids[2][0].grid[i] = 1;
+		        				board.CheckGrid(1, board.grids[2][0]);
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[2][0]);
+		        				
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini6Playable)
 		        			{
 		        				board.grids[2][0].grid[i] = 2;
+		        				board.CheckGrid(2, board.grids[2][0]);
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(2, board.grids[2][0]);
+		        				
 		        			}
 		        			break;
 		        			
 	                	case 7:
 	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini7Playable)
 		        			{
 		        				board.grids[2][1].grid[i] = 1;
+		        				board.CheckGrid(1, board.grids[2][1]);
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[2][1]);
+		        				
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini7Playable)
 		        			{
 		        				board.grids[2][1].grid[i] = 2;
+		        				board.CheckGrid(2, board.grids[2][1]);
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(2, board.grids[2][1]);
 		        			}
 		        			break;
 		        			
 	                	case 8:
 	                		i = miniboard_id;
-	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		if(board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini8Playable)
 		        			{
 		        				board.grids[2][2].grid[i] = 1;
+		        				board.CheckGrid(1, board.grids[2][2]);
 		        				board.isPlayer1Turn = false;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(1, board.grids[2][2]);
 		        			}
-	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && board.grids[row][col].grid[i] == 0)
+	                		else if(!board.isPlayer1Turn && board.nextMoveRow == row && board.nextMoveCol == col && mini8Playable)
 		        			{
 		        				board.grids[2][2].grid[i] = 2;
+		        				board.CheckGrid(2, board.grids[2][2]);
 		        				board.isPlayer1Turn = true;
 		        				board.nextMoveRow = rowP;
 		        				board.nextMoveCol = colP;
-		        				board.CheckGrid(2, board.grids[2][2]);
 		        			}
 		        			break;
 	                } 
+	                board.NumMoves();
 	            }
+                
             }
         }
+        
         board.checkGameOver();
         if(board.gameOver1 || board.gameOver2 || board.gameOverC)
         {
@@ -471,16 +506,232 @@ public class GameScreen extends Screen
         	g.drawPixmap(Assets.GSec8, 0, 0);
         }
 
-        
-        
-        if(board.miniBoardWonX)
-        {
-        	g.drawPixmap(Assets.bigX, 0, 0);
-        }
+    	if(board.miniBoardWonX)
+    	{
+        	if(board.CheckGrid(1, board.grids[0][0]))
+        	{
+        		if(board.NumAvailMoves != 0)
+        		{
+        			g.drawPixmap(Assets.bigX, board.GRID_START_X, board.GRID_START_Y);
+        		}
+        		else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X, board.GRID_START_Y);
+        		}
+        		mini0Playable = false;
+        	}
+        	else if(board.CheckGrid(1, board.grids[0][1]))
+        	{
+        		if(board.NumAvailMoves != 0)
+        		{
+        			g.drawPixmap(Assets.bigX, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y);
+        		}
+        		else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y);
+        		}
+        		mini1Playable = false;
+        	}
+        	else if(board.CheckGrid(1, board.grids[0][2]))
+        	{
+        		if(board.NumAvailMoves != 0)
+        		{
+        			g.drawPixmap(Assets.bigX, board.GRID_START_X + board.GRID_WIDTH*2, board.GRID_START_Y);
+        		}
+        		else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X + board.GRID_WIDTH*2, board.GRID_START_Y);
+        		}
+        		mini2Playable = false;
+        	}
+        	
+        	else if(board.CheckGrid(1, board.grids[1][0]))
+        	{
+        		if(board.NumAvailMoves != 0)
+        		{
+        			g.drawPixmap(Assets.bigX, board.GRID_START_X, board.GRID_START_Y + board.GRID_HEIGHT);
+        		}
+        		else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X, board.GRID_START_Y + board.GRID_HEIGHT);
+        		}
+        		mini3Playable = false;
+        	}
+        	else if(board.CheckGrid(1, board.grids[1][1]))
+        	{
+        		if(board.NumAvailMoves != 0)
+        		{
+        			g.drawPixmap(Assets.bigX, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y + board.GRID_HEIGHT);
+        		}
+        		else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y + board.GRID_HEIGHT);
+        		}
+        		mini4Playable = false;
+        	}
+        	else if(board.CheckGrid(1, board.grids[1][2]))
+        	{
+        		if(board.NumAvailMoves != 0)
+        		{
+        			g.drawPixmap(Assets.bigX, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+        		else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+        		mini5Playable = false;
+        	}
+        	
+        	else if(board.CheckGrid(1, board.grids[2][0]))
+        	{
+        		if(board.NumAvailMoves != 0)
+        		{
+        			g.drawPixmap(Assets.bigX, board.GRID_START_X, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+        		else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+        		mini6Playable = false;
+        	}
+        	else if(board.CheckGrid(1, board.grids[2][1]))
+        	{
+        		if(board.NumAvailMoves != 0)
+        		{
+        			g.drawPixmap(Assets.bigX, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+        		else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+        		mini7Playable = false;
+        	}
+        	else if(board.CheckGrid(1, board.grids[2][2]))
+        	{
+        		if(board.NumAvailMoves != 0)
+        		{
+        			g.drawPixmap(Assets.bigX, board.GRID_START_X + board.GRID_WIDTH*2, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+        		else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X + board.GRID_WIDTH*2, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+        		mini8Playable = false;
+        	}
+    	}
     	else if(board.miniBoardWonO)
     	{
-    		g.drawPixmap(Assets.bigO, 0, 0);
-        }
+    		if(board.CheckGrid(2, board.grids[0][0]))
+        	{
+    			if(board.NumAvailMoves != 0)
+        		{
+    				g.drawPixmap(Assets.bigO, board.GRID_START_X, board.GRID_START_Y);
+        		}
+    			else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X, board.GRID_START_Y);
+        		}
+        		mini0Playable = false;
+        	}
+    		else if(board.CheckGrid(2, board.grids[0][1]))
+        	{
+    			if(board.NumAvailMoves != 0)
+        		{
+    				g.drawPixmap(Assets.bigO, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y);
+        		}
+    			else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y);
+        		}
+        		mini1Playable = false;
+        	}
+    		else if(board.CheckGrid(2, board.grids[0][2]))
+        	{
+    			if(board.NumAvailMoves != 0)
+        		{
+    				g.drawPixmap(Assets.bigO, board.GRID_START_X + board.GRID_WIDTH*2, board.GRID_START_Y);
+        		}
+    			else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X + board.GRID_WIDTH*2, board.GRID_START_Y);
+        		}
+        		mini2Playable = false;
+        	}
+        	
+    		else if(board.CheckGrid(2, board.grids[1][0]))
+        	{
+    			if(board.NumAvailMoves != 0)
+        		{
+    				g.drawPixmap(Assets.bigO, board.GRID_START_X, board.GRID_START_Y + board.GRID_HEIGHT);
+        		}
+    			else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X, board.GRID_START_Y + board.GRID_HEIGHT);
+        		}
+        		mini3Playable = false;
+        	}
+    		else if(board.CheckGrid(2, board.grids[1][1]))
+        	{
+    			if(board.NumAvailMoves != 0)
+        		{
+    				g.drawPixmap(Assets.bigO, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y + board.GRID_HEIGHT);
+        		}
+    			else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y + board.GRID_HEIGHT);
+        		}
+        		mini4Playable = false;
+        	}
+    		else if(board.CheckGrid(2, board.grids[1][2]))
+        	{
+    			if(board.NumAvailMoves != 0)
+        		{
+    				g.drawPixmap(Assets.bigO, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+    			else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+        		mini5Playable = false;
+        	}
+        	
+    		else if(board.CheckGrid(2, board.grids[2][0]))
+        	{
+    			if(board.NumAvailMoves != 0)
+        		{
+    				g.drawPixmap(Assets.bigO, board.GRID_START_X, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+    			else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+        		mini6Playable = false;
+        	}
+    		else if(board.CheckGrid(2, board.grids[2][1]))
+        	{
+    			if(board.NumAvailMoves != 0)
+        		{
+    				g.drawPixmap(Assets.bigO, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+    			else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X + board.GRID_WIDTH, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+        		mini7Playable = false;
+        	}
+    		else if(board.CheckGrid(2, board.grids[2][2]))
+        	{
+    			if(board.NumAvailMoves != 0)
+        		{
+    				g.drawPixmap(Assets.bigO, board.GRID_START_X + board.GRID_WIDTH*2, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+    			else
+        		{
+        			g.drawPixmap(Assets.miniCats, board.GRID_START_X + board.GRID_WIDTH*2, board.GRID_START_Y + board.GRID_HEIGHT*2);
+        		}
+        		mini8Playable = false;
+        	}
+    	}
     }
 
     private void drawPausedUI() 

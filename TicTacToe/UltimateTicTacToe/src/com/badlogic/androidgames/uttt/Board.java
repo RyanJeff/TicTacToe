@@ -14,8 +14,6 @@ public class Board
     float xLoc = 0;
     float yLoc = 0;
     static TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
-    public static boolean gameOver = false;
-    //TicTacToeGrid grids[][] = new TicTacToeGrid[3][3];
     public Game game;
     Board board;
     public boolean isPlayer1Turn = true;
@@ -80,9 +78,12 @@ public class Board
     }
 
     
-
+    public boolean isBoardPlayable = true;
     public boolean miniBoardWonX = false;
     public boolean miniBoardWonO = false;
+    public boolean miniBoardCatsGame = false;
+    
+    
 
     public boolean CheckGrid(int playerNumber, TicTacToeGrid theGrid)
     {
@@ -117,6 +118,7 @@ public class Board
 			}
 			return true;
 		}
+		
 		//diagonal checks for miniboards
 		if(theGrid.grid[0] == playerNumber && theGrid.grid[4] == playerNumber && theGrid.grid[8] == playerNumber ||
 			theGrid.grid[2] == playerNumber && theGrid.grid[4] == playerNumber && theGrid.grid[6] == playerNumber)
@@ -131,6 +133,13 @@ public class Board
 			}
 			return true;
 		}
+		
+		//check for cat's game on miniboard
+		//NumMoves();
+		//if(NumAvailMoves == 0)
+		//{
+		//	miniBoardCatsGame = true;
+		//}		
 		
     	return false;
     }
@@ -177,8 +186,9 @@ public class Board
 			gameOver2 = true;
 		}
 		
-		//NumMoves();
-		if(NumMoves() == 0)
+		//check for cat's game on masterboard
+		NumMoves();
+		if(NumAvailMoves == 0)
 		{
 			gameOverC = true;
 		}
@@ -229,42 +239,36 @@ public class Board
     		isPlayer1Turn = true;
     	}
 	}
-
-    //int moves = board.NumMoves();
-    //for(int i = 0; i < moves; ++i)
-	//{
-	//	Board child = board.Clone();
-	//	child.MakeMove(i);
-		//add child to the tree
-	//}
     */
     
-    public int numAvailMoves = 0;
+    public int NumAvailMoves = 0;
     
     public int NumMoves()
     {
+    	NumAvailMoves = 0;
 		for(int i = 0; i < 9; ++i)
 		{
     		if(grids[nextMoveRow][nextMoveCol].grid[i] == 0)
     		{
-    			numAvailMoves++;
+    			NumAvailMoves++;
     		}
 		}
-		return numAvailMoves;
+		return NumAvailMoves;
     }
+    
     public int RandomMove()
     {
     	int Start = 1;
     	int End = NumMoves();
     	Random random = new Random();
     	for (int idx = 1; idx <= 1; ++idx)
-    		{
+    	{
     		//int randomInt = randomGenerator.nextInt(9);
-    	    }
+    	}
     	return 0;
     }
-    /*
     
+    /*
     private void AIPlayer()
     {
     	// use java.util.Random
@@ -272,7 +276,6 @@ public class Board
     	while(isPlayer1Turn == false)
     	{
     		int i = NumMoves();
-    		
     	}
     	
     	// create a bunch of rules
@@ -298,9 +301,9 @@ public class Board
 		return retVal;
     }
     */
+    
     public void destroy()
     {
     	
     }
-    
 }

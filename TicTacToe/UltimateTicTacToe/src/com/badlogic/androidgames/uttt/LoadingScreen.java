@@ -43,6 +43,7 @@ public class LoadingScreen extends Screen
         Assets.GSec8 = g.newPixmap("GSec8.png", PixmapFormat.ARGB4444);
         Assets.bigX = g.newPixmap("bigX.png", PixmapFormat.ARGB4444);
         Assets.bigO = g.newPixmap("bigO.png", PixmapFormat.ARGB4444);
+        Assets.miniCats = g.newPixmap("miniCats.png", PixmapFormat.ARGB4444);
         Assets.click = game.getAudio().newSound("click.mp3");
         Assets.clinkSound = game.getAudio().newSound("clinkSound.mp3");
         

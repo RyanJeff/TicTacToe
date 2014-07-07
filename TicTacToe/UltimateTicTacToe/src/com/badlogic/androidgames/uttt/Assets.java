@@ -32,6 +32,7 @@ public class Assets
     public static Pixmap GSec8;
     public static Pixmap bigX;
     public static Pixmap bigO;
+    public static Pixmap miniCats;
     public static Sound click;
     public static Sound clinkSound;
     //public static Sound BGM;
