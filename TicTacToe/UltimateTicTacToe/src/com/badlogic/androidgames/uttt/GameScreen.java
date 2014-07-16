@@ -230,6 +230,7 @@ public class GameScreen extends Screen
 		    			        				board.nextMoveRow = rowP;
 		    			        				board.nextMoveCol = colP;
 		    			        				board.CheckGrid(2, board.grids[0][0]);
+		    			        				break;
 		                					}
 		                					else
 		                					{
